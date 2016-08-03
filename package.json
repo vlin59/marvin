@@ -43,6 +43,9 @@
   },
   "engines": {
     "node": "4.4.7"
+  },
+  "devDependencies": {
+    "jasmine": "^2.4.1",
+    "jasmine-core": "^2.4.1"
   }
 }
-
