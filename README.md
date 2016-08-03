@@ -1,12 +1,11 @@
-# unicorn-status
-
-> Pithy project description
+# Marvin - The Intuitive Concierge Web Application
+A personal concierge app that hooks into your interests and suggests events, restaurants, appointment reminders, etc.
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: [Ji](https://github.com/JiBaik)
+  - __Scrum Master__: [Victor](https://github.com/vlin59)
+  - __Development Team Members__: [AJ](https://github.com/ajzawawi), [Taylor](https://github.com/taylorpage)
 
 ## Table of Contents
 
