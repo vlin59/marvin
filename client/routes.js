@@ -4,7 +4,7 @@ import { Router, Route, Link, hashHistory, browserHistory, IndexRoute, Redirect}
 import MainPage from './components/main';
 import EventsPage from './containers/EventsPage';
 
-export default (
+export default(
   <Route path='/' component={MainPage}>
     <IndexRoute component={EventsPage}/>
   </Route>
