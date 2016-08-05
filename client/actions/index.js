@@ -9,6 +9,7 @@ export function setEvents (event) {
 }
 
 export function searchEvents (event) {
+  console.log('searchEvents');
   return {
     type: SEARCH_EVENTS,
     payload: event
