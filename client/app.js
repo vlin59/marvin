@@ -19,22 +19,8 @@ ReactStormpath.init({
     // Required when you use type 'redux'.
     // The store that you wish to dispatch events to.
     store: createStoreWithMiddleware(reducers)
-  },
-
-  // Optional: If your are running our framework integration
-  // (e.g. express-stormpath) on a different domain, or you have
-  // changed the default endpoints in the framework integration.
-  // Values shown are the defaults.
-  endpoints: {
-    baseUri: null, // E.g. https://api.example.com
-    me: '/me',
-    login: '/login',
-    register: '/register',
-    verifyEmail: '/verify',
-    forgotPassword: '/forgot',
-    changePassword: '/change',
-    logout: '/logout'
   }
+
 });
 
 ReactDOM.render(

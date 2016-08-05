@@ -5,11 +5,13 @@ import MainPage from './components/main';
 import EventsPage from './containers/EventsPage';
 import RegistrationPage from './components/auth/RegistrationPage';
 import LoginPage from './components/auth/LoginPage';
+import { LogoutRoute } from 'react-stormpath';
 
 export default(
   <Route path='/' component={LoginPage}>
     <IndexRoute component={EventsPage}/>
     <Route path ='register' component ={RegistrationPage} />
     <Route path ='login' component ={LoginPage} />
+    <LogoutRoute path = 'logout' />
   </Route>
   )

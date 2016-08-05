@@ -1,5 +1,8 @@
 ### node etc ###
 
+#stormpath
+stormpath.yml
+
 # Logs
 logs
 *.log
