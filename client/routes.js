@@ -8,7 +8,7 @@ import LoginPage from './components/auth/LoginPage';
 import { LogoutRoute } from 'react-stormpath';
 
 export default(
-  <Route path='/' component={LoginPage}>
+  <Route path='/' component={MainPage}>
     <IndexRoute component={EventsPage}/>
     <Route path ='register' component ={RegistrationPage} />
     <Route path ='login' component ={LoginPage} />
