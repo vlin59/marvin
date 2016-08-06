@@ -1,5 +1,5 @@
 import React from 'react';
-import Search from './search.js'
+import Search from '../containers/Search.js'
 
 export default class main extends React.Component {
   constructor(props){
