@@ -13,8 +13,8 @@ class Nav extends React.Component {
 
 
   render() {
-    console.log('propssss', this.props);
-    if(!this.props.user){
+    console.log('propssss', this.props.user);
+    if(!this.props.user.username){
       return (
         <nav className="container-fluid">
           <div className="row text-center navbar">
@@ -43,10 +43,6 @@ function mapStateToProps (state) {
   };
 };
 
-function mapDispatchToProps (dispatch) {
-  return bindActionCreators({
-  }, dispatch);
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+export default connect(mapStateToProps)(Nav);
 
