@@ -8,10 +8,10 @@ export function setEvents (event) {
   };
 }
 
-export function searchEvents (event) {
-  console.log('searchEvents');
+export function searchEvents (search) {
+  console.log(search);
   return {
     type: SEARCH_EVENTS,
-    payload: event
+    payload: search
   };
 }

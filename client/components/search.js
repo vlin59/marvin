@@ -1,7 +1,10 @@
 import React from 'react';
 import { searchEvents } from '../actions/index.js'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-export default class search extends React.Component {
+
+class Search extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -10,7 +13,6 @@ export default class search extends React.Component {
   }
 
   handleChange(event) {
-    console.log(this.state)
     this.setState({
       value: event.target.value
     })
@@ -24,8 +26,26 @@ export default class search extends React.Component {
           value={this.state.value}
           onChange={this.handleChange.bind(this)}
         ></input>
-        <button onClick={searchEvents}>Search Events</button>
+        <button onClick={
+          this.props.searchEvents.bind(this, 'params')
+        }
+        >Search Events</button>
       </div>
       )
   }
 }
+
+function mapStateToProps (state) {
+  return {
+    search: state
+  };
+};
+
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators({
+    searchEvents: searchEvents
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
+
