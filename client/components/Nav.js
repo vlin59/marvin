@@ -6,13 +6,14 @@ import { Link } from 'react-router';
 import NavUser from './NavUser';
 
 class Nav extends React.Component {
+
   constructor(props){
     super(props);
   }
 
 
   render() {
-    console.log(this.props);
+    console.log('propssss', this.props);
     if(!this.props.user){
       return (
         <nav className="container-fluid">
