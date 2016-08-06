@@ -12,7 +12,7 @@ export function setEvents (event) {
 
 export function searchEvents (search) {
   console.log(search);
-    axios.get('https://www.eventbriteapi.com/v3/events/search/?q=' + search + '&token=UQOCU57TT67WA4W7V6RE'
+    axios.get('https://www.eventbriteapi.com/v3/events/search/?categories=' + search.category + '&token=UQOCU57TT67WA4W7V6RE'
     )
     .then(function(data) {
       console.log(data);
