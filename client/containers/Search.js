@@ -27,7 +27,7 @@ class Search extends React.Component {
           onChange={this.handleChange.bind(this)}
         ></input>
         <button onClick={
-          this.props.searchEvents.bind(this, 'params')
+          this.props.searchEvents.bind(this, this.state.value)
         }
         >Search Events</button>
       </div>
