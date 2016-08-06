@@ -36,9 +36,10 @@ class Search extends React.Component {
 
   handleChange(event) {
     let val = document.getElementById('category-select');
+    let qry = document.getElementById('query');
 
     this.setState({
-      value: event.target.value,
+      value: qry.value,
       category: val.options[val.selectedIndex].value
     })
   }
@@ -46,13 +47,13 @@ class Search extends React.Component {
   render() {
     return (
       <div>
-        <select id='category-select'>
+        <select id='category-select' onChange={this.handleChange.bind(this)}>
           { categories.map(obj => {
               return <option value={ obj.value }>{ obj.cat }</option>
             })
           }
         </select>
-        <input
+        <input id='query'
           type='text'
           value={this.state.value}
           onChange={this.handleChange.bind(this)}
