@@ -14,7 +14,8 @@ class Nav extends React.Component {
 
   render() {
     console.log('propssss', this.props.user);
-    if(!this.props.user.username){
+
+    if(!this.props.user){
       return (
         <nav className="container-fluid">
           <div className="row text-center navbar">
