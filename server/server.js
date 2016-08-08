@@ -37,7 +37,7 @@ app.post('/search', function(request, response) {
 });
 
 app.on('stormpath.ready', function() {
-  app.listen(3000);
+  app.listen(port);
 });
 
 module.exports = app;
