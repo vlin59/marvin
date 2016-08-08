@@ -12,7 +12,11 @@ class EventsPage extends React.Component{
 
   render (){
     return(
-      <h2>{this.props.events[0]}</h2>
+      <div className="text-xs-center">
+        <h2>Marvin</h2>
+        <p className="lead">Your Intuitive Personal Butler</p>
+        <p>Outsource all the hard work to Marvin who will help you organize your life and find fun things to do - minus the trouble of planning.</p>
+      </div>
     )
   }
 }
