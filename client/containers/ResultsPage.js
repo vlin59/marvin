@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import ResultsPageEntry from '../components/ResultsPageEntry';
+import ResultsPageEntry from '../components/results/ResultsPageEntry';
 const Loader = require('react-loader');
 
 
