@@ -4,6 +4,7 @@ const cors = require('cors');
 const middleware = './middleware/middleware';
 const routes = './routes/routes';
 const path = require('path');
+const helpers = require('./helpers/helpers');
 
 const app = express();
 app.use(cors());
@@ -24,6 +25,14 @@ if (process.env.NODE_ENV !== 'production') {
   const config = require('../webpack.config.js');
   const compiler = webpack(config);
 }
+
+app.post('/search', function(request, response) {
+  var query = request.body.query;
+  var category = request.body.category;
+
+  helpers.searchEventBrite(category, query);
+  response.send(request.body);
+});
 
 app.on('stormpath.ready', function() {
   app.listen(3000);
