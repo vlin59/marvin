@@ -7,8 +7,9 @@ import { applyMiddleware, createStore } from 'redux';
 import routes from './routes';
 import reducers from './reducers';
 import createLogger from 'redux-logger'
+import promisehandler from './utils/promisehandler';
 
-const createStoreWithMiddleware = applyMiddleware(createLogger())(createStore);
+const createStoreWithMiddleware = applyMiddleware(promisehandler)(createStore);
 
 let store = createStoreWithMiddleware(reducers);
 
