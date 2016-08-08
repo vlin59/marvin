@@ -12,7 +12,7 @@ export default class ResultsPageEntry extends React.Component{
   }
 
   render(){
-    console.log(this.props.event);
+    // console.log(this.props.event);
     var description = this.props.event.description.html;
     var time =  this.convertDate(this.props.event.start.local);
 
