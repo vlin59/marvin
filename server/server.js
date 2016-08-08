@@ -30,8 +30,9 @@ app.post('/search', function(request, response) {
   var query = request.body.query;
   var category = request.body.category;
 
-  helpers.searchEventBrite(category, query);
-  response.send(request.body);
+  helpers.searchEventBrite(category, query, function(data) {
+    response.send(200, data);
+  });
 });
 
 app.on('stormpath.ready', function() {
