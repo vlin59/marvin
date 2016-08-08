@@ -32,7 +32,7 @@ class Search extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      value: ''
+      query: ''
     }
   }
 
@@ -41,39 +41,24 @@ class Search extends React.Component {
     let qry = document.getElementById('query');
 
     this.setState({
-      value: qry.value,
+      query: qry.value,
       category: val.options[val.selectedIndex].value
     })
   }
   searchEvents (search) {
-   const context = this;
-   axios.get('https://www.eventbriteapi.com/v3/events/search/?categories=' + search.category + '&q=' + search.value + '&token=UQOCU57TT67WA4W7V6RE'
-    )
-    .then(function(data) {
-      console.log(data.data.events);
-      context.props.setEvents(data.data.events);
-    })
+    axios.post('/search', search);
   }
-
-
-
 
   render() {
     return (
       <div>
         <select id='category-select' onChange={this.handleChange.bind(this)}>
-          { categories.map(obj => {
-              return <option
-                value={ obj.value }
-               >{ obj.cat }</option>
-            })
-          }
+            { categories.map(obj => {
+                return <option value={ obj.value }>{ obj.cat }</option>
+              })
+            }
         </select>
-        <input id='query'
-          type='text'
-          value={this.state.value}
-          onChange={this.handleChange.bind(this)}
-        ></input>
+        <input id='query' type='text' value={this.state.query} onChange={this.handleChange.bind(this)}></input>
         <button onClick={
           this.searchEvents.bind(this, this.state)
         }
