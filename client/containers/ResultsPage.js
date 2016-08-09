@@ -49,10 +49,10 @@ class ResultsPage extends React.Component{
     };
 
     return(
-      <div>
+      <div className="container">
        <Loader loaded={this.state.loaded} options={options} className="spinner" />
         {this.props.events.map((event)=>
-          <ResultsPageEntry event={event} />
+            <ResultsPageEntry event={event} />
           )}
       </div>
       )

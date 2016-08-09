@@ -9,7 +9,17 @@ body {
  margin-top: 20%;
 }
 
-.eventContainer {
+.event-container {
   background-color: white;
   opacity: 0.9;
+  margin: 20px 0px 20px 10px;
+}
+
+.center-block {
+  width: 700px;
+  margin: 0 auto;
+}
+
+.event-img {
+  margin-left: -15px;
 }
