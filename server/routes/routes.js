@@ -29,8 +29,6 @@ module.exports = function(app, express) {
     var query = req.body.query;
     var category = req.body.category;
 
-    console.log('hello');
-
     helpers.searchEventBrite(category, query, function(data) {
       res.send(200, data);
     });
