@@ -12,13 +12,11 @@ class ResultsPage extends React.Component{
 
   }
 
-    componentWillMount() {
+  componentWillMount() {
     this.setState({
       loaded: false
     });
   }
-
-
 
   componentWillReceiveProps(){
     this.setState({
