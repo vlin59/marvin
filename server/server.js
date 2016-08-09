@@ -6,6 +6,7 @@ const routes = './routes/routes';
 const path = require('path');
 
 const app = express();
+
 app.use(cors());
 
 // Routes and middleware
@@ -15,6 +16,8 @@ require('./routes/routes')(app, express);
 app.get('*', function(request,response){
   response.sendFile(path.resolve(__dirname, '../client', 'index.html'));
 });
+
+
 
 const port = process.env.PORT || 3000;
 
