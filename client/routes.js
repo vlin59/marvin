@@ -7,15 +7,13 @@ import RegistrationPage from './components/auth/RegistrationPage';
 import LoginPage from './components/auth/LoginPage';
 import { LogoutRoute } from 'react-stormpath';
 import ResultsPage from './containers/ResultsPage';
-import Dashboard from './containers/Dashboard';
 
 export default(
   <Route path='/' component={MainPage}>
     <IndexRoute component={EventsPage}/>
     <Route path ='register' component ={RegistrationPage} />
     <Route path ='login' component ={LoginPage} />
-    <Route path ='results' component ={ResultsPage}/>
-    <Route path ='dashboard' component ={Dashboard}/>
+    <Route path = 'results' component ={ResultsPage}/>
     <LogoutRoute path = 'logout' />
   </Route>
   )
