@@ -6,7 +6,7 @@ body {
 }
 
 .top {
- margin-top: 20%;
+ margin-top: 10%;
 }
 
 .event-container {
@@ -22,4 +22,22 @@ body {
 
 .event-img {
   margin-left: -15px;
+}
+
+.marvin-img {
+  max-width: 50%;
+}
+
+.marvin-intro {
+  padding-top: 100px;
+  font-size: 20px;
+}
+
+.marvin-headline {
+  font-size: 100px;
+  text-transform: uppercase;
+}
+
+.midnight-blue {
+  color: #2c3e50;
 }
