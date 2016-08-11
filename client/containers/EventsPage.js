@@ -1,6 +1,6 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
-import { setEvents } from '../actions/index.js';
+import { setCalendar } from '../actions/index.js';
 import { connect } from 'react-redux';
 import Search from '../containers/Search.js';
 
@@ -13,15 +13,34 @@ class EventsPage extends React.Component{
 
   render (){
     return(
-      <div>
-        <div className="text-xs-center">
-          <h2>Marvin</h2>
-          <p className="lead">Your Intuitive Personal Butler</p>
-          <p>Outsource all the hard work to Marvin who will help you organize your life and find fun things to do - minus the trouble of planning.</p>
+      <div className="top">
+        <div className="text-xs-center midnight-blue">
+          <div className="row">
+            <div className="col-md-5 text-xs-right">
+              <img className="marvin-img" src="styles/marvin_color.png" />
+            </div>
+
+            <div className="col-md-5 marvin-intro">
+            <div className="row">
+              <h2 className="marvin-headline">Marvin</h2>
+              <p className="lead">Your Intuitive Personal Butler</p>
+              <p>Outsource all the hard work to Marvin who will help you organize your life and find fun things to do - minus the trouble of planning.</p>
+            </div>
+
+             <div className="row text-xs-center">
+              <Search />
+            </div>
+
+
+            </div>
+
+
+          </div>
+
+
+
         </div>
-        <div className="row text-xs-center">
-          <Search />
-        </div>
+
       </div>
     )
   }
@@ -36,7 +55,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
-    setEvents: setEvents
+    setCalendar: setCalendar
   }, dispatch);
 };
 
