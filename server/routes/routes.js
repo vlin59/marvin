@@ -55,6 +55,11 @@ module.exports = function(app, express) {
     res.send(200);
   });
 
+  //This route will handle all API queries for the spotify component
+  app.post('/api/spotify', function(req, res){
+    res.send(200);
+  });
+
     // This route will handle all API queries for the fitbit/wellness component
   app.post('/api/fitbit', function(req, res){
     res.send(200);
