@@ -7,6 +7,8 @@ import RegistrationPage from './components/auth/RegistrationPage';
 import LoginPage from './components/auth/LoginPage';
 import { LogoutRoute } from 'react-stormpath';
 import ResultsPage from './containers/ResultsPage';
+import CalendarAuth from './components/calendar/CalendarAuth';
+import CalendarPage from './components/calendar/CalenderPage';
 
 export default(
   <Route path='/' component={MainPage}>
@@ -14,6 +16,9 @@ export default(
     <Route path ='register' component ={RegistrationPage} />
     <Route path ='login' component ={LoginPage} />
     <Route path = 'results' component ={ResultsPage}/>
+    <Route path = 'calendarauth' component ={CalendarAuth}/>
+    <Route path = 'process' component ={CalendarPage}/>
+    <Route path = 'calendar' component ={CalendarPage}/>
     <LogoutRoute path = 'logout' />
   </Route>
   )

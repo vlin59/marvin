@@ -12,7 +12,7 @@ class ResultsPage extends React.Component{
 
   }
 
-    componentWillMount() {
+  componentWillMount() {
     this.setState({
       loaded: false
     });
@@ -46,13 +46,13 @@ class ResultsPage extends React.Component{
     top: '50%',
     left: '50%',
     scale: 1.00
-    };
+  };
 
     return(
-      <div>
+      <div className="container">
        <Loader loaded={this.state.loaded} options={options} className="spinner" />
         {this.props.events.map((event)=>
-          <ResultsPageEntry event={event} />
+            <ResultsPageEntry event={event} />
           )}
       </div>
       )

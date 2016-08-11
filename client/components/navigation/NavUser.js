@@ -17,7 +17,7 @@ export default (props) => (
         <Link className="nav-link" to="/">Search</Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="/calendar">Calendar</Link>
+        <Link className="nav-link" to="/calendarauth">Calendar</Link>
       </li>
       <li className="nav-item">
         <Link className="nav-link" to="/dashboard"><span className="sr-only">(current)</span>Dashboard</Link>

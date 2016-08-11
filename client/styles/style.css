@@ -6,10 +6,38 @@ body {
 }
 
 .top {
- margin-top: 20%;
+ margin-top: 10%;
 }
 
-.eventContainer {
+.event-container {
   background-color: white;
   opacity: 0.9;
+  margin: 20px 0px 20px 10px;
+}
+
+.center-block {
+  width: 700px;
+  margin: 0 auto;
+}
+
+.event-img {
+  margin-left: -15px;
+}
+
+.marvin-img {
+  max-width: 50%;
+}
+
+.marvin-intro {
+  padding-top: 100px;
+  font-size: 20px;
+}
+
+.marvin-headline {
+  font-size: 100px;
+  text-transform: uppercase;
+}
+
+.midnight-blue {
+  color: #2c3e50;
 }
