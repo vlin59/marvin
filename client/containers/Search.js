@@ -33,8 +33,17 @@ class Search extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      query: ''
+      query: '',
+      lat: 0.0,
+      long: 0.0
     }
+
+    navigator.geolocation.getCurrentPosition(position => {
+      this.setState({
+        lat: position.coords.latitude,
+        long: position.coords.longitude
+      });
+    });
   }
 
   handleChange(event) {
