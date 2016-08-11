@@ -28,8 +28,10 @@ module.exports = function(app, express) {
   app.post('/api/eventbrite', function(req, res){
     var query = req.body.query;
     var category = req.body.category;
+    var lat = req.body.lat;
+    var long = req.body.long;
 
-    helpers.searchEventBrite(category, query, function(data) {
+    helpers.searchEventBrite(category, query, lat, long, function(data) {
       res.send(200, data);
     });
   });

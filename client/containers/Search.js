@@ -1,5 +1,4 @@
 import React from 'react';
-//import { searchEvents } from '../actions/index.js'
 import { setEvents } from '../actions/index.js'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -33,8 +32,17 @@ class Search extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      query: ''
+      query: '',
+      lat: '0.0',
+      long: '0.0'
     }
+
+    navigator.geolocation.getCurrentPosition(position => {
+      this.setState({
+        lat: position.coords.latitude.toString(),
+        long: position.coords.longitude.toString()
+      });
+    });
   }
 
   handleChange(event) {
