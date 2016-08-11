@@ -12,7 +12,7 @@ class ResultsPage extends React.Component{
 
   }
 
-    componentWillMount() {
+  componentWillMount() {
     this.setState({
       loaded: false
     });
@@ -46,7 +46,7 @@ class ResultsPage extends React.Component{
     top: '50%',
     left: '50%',
     scale: 1.00
-    };
+  };
 
     return(
       <div className="container">
