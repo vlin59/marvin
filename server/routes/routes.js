@@ -1,4 +1,5 @@
 const helpers = require('../helpers/helpers');
+const google = require('../helpers/google');
 
 module.exports = function(app, express) {
 
@@ -53,14 +54,28 @@ module.exports = function(app, express) {
     res.send(200);
   });
 
-  // This route will handle all Google APIs
-  app.post('/api/google', function(req, res){
-    res.send(200);
-  });
-
     // This route will handle all API queries for the fitbit/wellness component
   app.post('/api/fitbit', function(req, res){
     res.send(200);
+  });
+
+  /* Calendar Routes */
+  app.post('/calendarauth', function(req, res){
+
+    const code = req.query.code;
+
+    google.getGoogleAuth(function(url){
+      res.send(200, url);
+    });
+  });
+
+  app.post('/google', function(req, res){
+    const code = req.body.params.code;
+
+    google.getGoogleToken(code, function(events){
+      res.send(events);
+    })
+
   });
 
 
