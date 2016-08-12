@@ -1,5 +1,6 @@
 const helpers = require('../helpers/helpers');
 const google = require('../helpers/google');
+const lights = require('../helpers/lights');
 
 module.exports = function(app, express) {
 
@@ -76,6 +77,20 @@ module.exports = function(app, express) {
       res.send(events);
     })
 
+  });
+
+  // This route will handle all API queries for the light status
+  app.get('/api/lights', function(req, res){
+    lights.getStatus(function (lightstatus) {
+      res.send(lightstatus);
+    });
+  });
+
+  // This route will handle all API queries to toggle lights
+  app.post('/api/lights', function(req, res){
+    lights.toggle(function (lightstatus) {
+      res.send(lightstatus);
+    });
   });
 
 
