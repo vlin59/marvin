@@ -11,7 +11,7 @@ export default class MusicPlayer extends React.Component {
     this.state = {
       input: '',
       tracks: [],
-      playing: ''
+      playing: null
     }
   }
 
@@ -39,14 +39,17 @@ export default class MusicPlayer extends React.Component {
   }
 
   playMusic(i) {
-    // var context = this;
+    var context = this;
 
-    // context.setState({
+    if (this.state.playing) {
+      this.state.playing.pause();
+    }
 
+    this.setState({
+      playing: new Audio(this.state.tracks[i].preview_url)
+    });
 
-    // })
-    var song = new Audio(this.state.tracks[i].preview_url);
-    song.play();
+    this.state.playing.play();
 
   }
 
