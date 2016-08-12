@@ -25,7 +25,7 @@ exports.searchEventBrite = function(category, query, lat, long, cb) {
 
 exports.searchSpotify = function(state, cb){
   var options = 'https://api.spotify.com/v1/search/?q=' + state +
-  '&type=album';
+  '&type=track';
 
   request(options, function(err, res, req) {
     cb(res.body);

@@ -9,7 +9,8 @@ export default class MusicPlayer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: ''
+      input: '',
+      tracks: []
     }
   }
 
@@ -28,9 +29,16 @@ export default class MusicPlayer extends React.Component {
     var context = this;
 
     axios.post('/api/spotify', { q:track }).then(function(data) {
-      console.log(data.data.albums.items);
-      context.props.setTracks(data.data.albums.items);
+      console.log(data.data.tracks.items);
+      context.props.setTracks(data.data.tracks.items);
+      context.setState({
+        tracks: data.data.tracks.items
+      });
     })
+  }
+
+  playMusic(track) {
+    console.log(track.preview_url);
   }
 
   render() {
@@ -38,6 +46,15 @@ export default class MusicPlayer extends React.Component {
       <div>
       <input type="text" id="track-input" onChange={this.handleChange.bind(this)}></input>
       <button onClick={this.searchMusic.bind(this, this.state.input)}>Submit</button>
+      <div>
+        { this.state.tracks.map(track=> {
+          <div>
+            <div>{ track.name }</div>
+            <button></button>
+          </div>
+          })
+        }
+      </div>
       </div>
     );
   }
@@ -45,7 +62,7 @@ export default class MusicPlayer extends React.Component {
 
 function mapStateToProps (state) {
   return {
-    search: state
+    tracks: state.tracks
   };
 };
 
