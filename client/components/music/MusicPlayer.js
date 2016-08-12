@@ -8,15 +8,10 @@ export default class MusicPlayer extends React.Component {
   }
 
   searchMusic() {
-    axios.get({
-        url: 'https://api.spotify.com/v1/search/',
-        data: {
-            q: 'Hold Me',
-            type: 'album'
-        }
-    }).then(function(data) {
-        console.log(JSON.parse(data));
-    });
+    var context = this;
+    axios.post('/api/spotify', {'track' : 'Hold me'}).then(function(data) {
+      console.log(data.data);
+    })
   }
 
   render() {

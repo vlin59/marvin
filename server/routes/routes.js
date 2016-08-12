@@ -57,7 +57,9 @@ module.exports = function(app, express) {
 
   //This route will handle all API queries for the spotify component
   app.post('/api/spotify', function(req, res){
-    res.send(200);
+    helpers.searchSpotify(req.body.track, function(data){
+      res.send(200, data);
+    })
   });
 
     // This route will handle all API queries for the fitbit/wellness component

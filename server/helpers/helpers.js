@@ -20,3 +20,12 @@ exports.searchEventBrite = function(category, query, lat, long, cb) {
       cb(JSON.parse(res.body));
   });
 }
+
+exports.searchSpotify = function(track, cb){
+  var options = 'https://api.spotify.com/v1/search/?q=' + track +
+  '&type=album'
+
+  request(options, function(err, res, req) {
+    cb(res.body);
+  });
+}
