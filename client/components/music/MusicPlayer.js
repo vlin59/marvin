@@ -10,7 +10,8 @@ export default class MusicPlayer extends React.Component {
     super(props);
     this.state = {
       input: '',
-      tracks: []
+      tracks: [],
+      playing: ''
     }
   }
 
@@ -37,24 +38,34 @@ export default class MusicPlayer extends React.Component {
     })
   }
 
-  playMusic(track) {
-    console.log(track.preview_url);
+  playMusic(i) {
+    // var context = this;
+
+    // context.setState({
+
+
+    // })
+    var song = new Audio(this.state.tracks[i].preview_url);
+    song.play();
+
   }
 
   render() {
     return (
       <div>
-      <input type="text" id="track-input" onChange={this.handleChange.bind(this)}></input>
-      <button onClick={this.searchMusic.bind(this, this.state.input)}>Submit</button>
-      <div>
-        { this.state.tracks.map(track=> {
-          <div>
-            <div>{ track.name }</div>
-            <button></button>
-          </div>
-          })
-        }
-      </div>
+        <input type="text" id="track-input" onChange={this.handleChange.bind(this)}></input>
+        <button onClick={this.searchMusic.bind(this, this.state.input)}>Submit</button>
+        <div>
+          { this.state.tracks.map((track, i) => {
+              return (
+                <div>
+                  <div>{ track.name }</div>
+                  <button onClick={this.playMusic.bind(this, i)}></button>
+                </div>
+              )
+            })
+          }
+        </div>
       </div>
     );
   }
