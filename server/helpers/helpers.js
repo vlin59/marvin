@@ -23,8 +23,8 @@ exports.searchEventBrite = function(category, query, lat, long, cb) {
   });
 }
 
-exports.searchSpotify = function(track, cb){
-  var options = 'https://api.spotify.com/v1/search/?q=' + track +
+exports.searchSpotify = function(state, cb){
+  var options = 'https://api.spotify.com/v1/search/?q=' + state +
   '&type=album';
 
   request(options, function(err, res, req) {
