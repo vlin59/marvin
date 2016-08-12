@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setTracks } from '../actions/index.js'
+import { setTracks } from '../../actions/index.js'
 
 
 export default class MusicPlayer extends React.Component {
@@ -23,8 +23,13 @@ export default class MusicPlayer extends React.Component {
   }
 
   searchMusic(track) {
+    //clear all previous tracks
+    this.props.setTracks([]);
+    var context = this;
+
     axios.post('/api/spotify', { q:track }).then(function(data) {
-      console.log(data.data);
+      console.log(data.data.albums.items);
+      context.props.setTracks(data.data.albums.items);
     })
   }
 
