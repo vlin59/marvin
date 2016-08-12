@@ -20,7 +20,7 @@ export default(
     <Route path = 'calendarauth' component ={CalendarAuth}/>
     <Route path = 'process' component ={CalendarPage}/>
     <Route path = 'calendar' component ={CalendarPage}/>
-    <Route path = 'music' component ={ MusicPlayer }/>
+    <Route path = 'music' component ={MusicPlayer}/>
     <LogoutRoute path = 'logout' />
   </Route>
   )
