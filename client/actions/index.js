@@ -5,6 +5,8 @@ export const SET_CALENDAR = 'SET_CALENDAR';
 export const SET_TRACKS = 'SET_TRACKS';
 export const SET_LIGHTS = 'SET_LIGHTS';
 export const SET_MOVIES = 'SET_MOVIES';
+export const SET_TODOS = 'SET_TODOS';
+
 
 export function setCalendar(events) {
   return {
