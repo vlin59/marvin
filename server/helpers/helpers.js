@@ -138,5 +138,4 @@ const genres = {
     }
   ]
 }
->>>>>>> (feat) Add movie info
->>>>>>> Make rebase changes
+
