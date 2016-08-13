@@ -24,6 +24,7 @@ export function setTracks (tracks) {
   return {
     type: SET_TRACKS,
     payload: tracks
+
   };
 }
 
@@ -32,6 +33,7 @@ export function setLights (lights) {
     type: SET_LIGHTS,
     payload: lights
   }
+}
 
 
 export function setMovies(movies) {

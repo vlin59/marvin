@@ -1,8 +1,9 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
-import { setCalendar } from '../actions/index.js';
+import { setCalendar } from '../actions/index';
 import { connect } from 'react-redux';
-import Search from '../containers/Search.js';
+import Search from './Search';
+import axios from 'axios';
 
 
 class EventsPage extends React.Component{
@@ -10,8 +11,20 @@ class EventsPage extends React.Component{
     super(props);
   }
 
+  componentDidUpdate(){
+    console.log('USER DID UPDATE', this.props.user);
+    if(this.props.user){
+      console.log('REQUEST');
+      axios.get('/me')
+      .then(function(data){
+        console.log(data);
+      });
+    }
+
+  }
 
   render (){
+    console.log('RENDER USER',this.props.user)
     return(
       <div className="top">
         <div className="text-xs-center midnight-blue">

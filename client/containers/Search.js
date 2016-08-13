@@ -116,14 +116,14 @@ function mapStateToProps (state) {
   return {
     search: state
   };
-};
+}
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
     setEvents: setEvents,
     setMovies: setMovies
   }, dispatch);
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);
 
