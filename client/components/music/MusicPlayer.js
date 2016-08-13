@@ -12,6 +12,7 @@ export default class MusicPlayer extends React.Component {
       input: '',
       tracks: [],
       track: null,
+      trackName: '',
       playing: false
     }
   }
@@ -40,8 +41,14 @@ export default class MusicPlayer extends React.Component {
   }
 
   setTrack(i) {
+    if (this.state.playing) {
+      this.state.track.pause();
+    }
+
     this.setState({
-      track: new Audio(this.state.tracks[i].preview_url)
+      playing: false,
+      track: new Audio(this.state.tracks[i].preview_url),
+      trackName: this.state.tracks[i].name
     });
   }
 
@@ -58,10 +65,13 @@ export default class MusicPlayer extends React.Component {
         <input type="text" id="track-input" onChange={this.handleChange.bind(this)}></input>
         <button onClick={this.searchMusic.bind(this, this.state.input)}>Submit</button>
         <div>
+          <div>Current Track Selected: { this.state.trackName }</div>
           <button onClick={ this.playPauseTrack.bind(this) } >Play/Pause</button>
           { this.state.tracks.map((track, i) => {
               return (
-                <div className="track-name" onClick={this.setTrack.bind(this, i)}>{ track.name }</div>
+                <div className="track-name" onClick={this.setTrack.bind(this, i)}>
+                  <img src={ track.album.images[0].url } className="col-xs-3"></img>
+                </div>
               )
             })
           }
