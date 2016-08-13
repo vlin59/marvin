@@ -17,7 +17,7 @@ class EventsPage extends React.Component{
         <div className="text-xs-center midnight-blue">
           <div className="row">
             <div className="col-md-5 text-xs-right">
-              <img className="marvin-img" src="styles/marvin_color.png" />
+              <img className="marvin-img marvin-rotate" src="styles/marvin_color.png" />
             </div>
 
             <div className="col-md-5 marvin-intro">

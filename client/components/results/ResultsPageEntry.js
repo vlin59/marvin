@@ -1,14 +1,18 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
+import { Link } from 'react-router';
 
 export default class ResultsPageEntry extends React.Component {
   constructor(props){
     super(props);
   }
+
   convertDate(time){
     var date = new Date(Date.parse(time));
     return date.toString();
   }
+
+
 
   render(){
     var description = this.props.event.description.text;
@@ -30,7 +34,7 @@ export default class ResultsPageEntry extends React.Component {
 
       <div className="row">
         <FontAwesome name='rocket'size='2x' />
-        <a href="#">Add to Calendar</a>
+        <Link to={{ pathname: '/calendar/new', query: {id: `${this.props.event.id}`} }} >Add to Calendar</Link>
       </div>
     </div>
 
@@ -39,3 +43,5 @@ export default class ResultsPageEntry extends React.Component {
   }
 
 }
+
+
