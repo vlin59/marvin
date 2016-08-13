@@ -32,7 +32,7 @@ export function setLights (lights) {
   return {
     type: SET_LIGHTS,
     payload: lights
-  }
+  };
 }
 
 
@@ -40,5 +40,12 @@ export function setMovies(movies) {
   return{
     type: SET_MOVIES,
     payload: movies
-  }
+  };
+}
+
+export function setTodos (todos) {
+  return {
+    type: SET_TODOS,
+    payload: todos
+  };
 }
