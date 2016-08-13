@@ -54,6 +54,7 @@ class Search extends React.Component {
       category: val.options[val.selectedIndex].value
     })
   }
+
   searchEvents (search) {
     //clear state
     this.props.setEvents([]);

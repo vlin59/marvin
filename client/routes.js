@@ -9,6 +9,7 @@ import { LogoutRoute } from 'react-stormpath';
 import ResultsPage from './containers/ResultsPage';
 import CalendarAuth from './components/calendar/CalendarAuth';
 import CalendarPage from './components/calendar/CalenderPage';
+import MusicPlayer from './components/music/MusicPlayer';
 
 export default(
   <Route path='/' component={MainPage}>
@@ -19,6 +20,7 @@ export default(
     <Route path = 'calendarauth' component ={CalendarAuth}/>
     <Route path = 'process' component ={CalendarPage}/>
     <Route path = 'calendar' component ={CalendarPage}/>
+    <Route path = 'music' component ={MusicPlayer}/>
     <LogoutRoute path = 'logout' />
   </Route>
   )
