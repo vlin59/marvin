@@ -3,6 +3,7 @@ import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router';
 
 export default class ResultsPageEntry extends React.Component {
+
   constructor(props){
     super(props);
   }

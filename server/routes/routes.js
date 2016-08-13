@@ -1,10 +1,15 @@
 const helpers = require('../helpers/helpers');
 const google = require('../helpers/google');
 const lights = require('../helpers/lights');
+const twilio = require('../helpers/twilio');
+const stormpath = require('stormpath-express');
 
 module.exports = function(app, express) {
 
   /* Database Routes */
+  app.post('/api/user/save', stormpath.loginRequired, function(req,res){
+
+  });
   // This route will handle all database queries for reminders
   app.post('/api/user/events', function(req, res){
     res.send(200);
@@ -12,6 +17,7 @@ module.exports = function(app, express) {
 
   // This route will handle all database queries for reminders
   app.post('/api/user/reminders', function(req, res){
+    twilio.sendText(req.body.number, req.body.msg);
     res.send(200);
   });
 
@@ -34,9 +40,15 @@ module.exports = function(app, express) {
     var long = req.body.long;
 
     helpers.searchEventBrite(category, query, lat, long, function(data) {
-      res.send(200, data);
+      res.send(201, data);
     });
   });
+
+  app.post('/api/moviesdb', function(req,res){
+    helpers.searchMoviesDB(function(data){
+      res.send(201, data);
+    });
+  })
 
   // This route will handle all API queries for yelp
   // Pass a type as part of request

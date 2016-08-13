@@ -11,6 +11,8 @@ app.use(cors());
 
 // Routes and middleware
 require('./middleware/middleware')(app, express);
+mongoose.connect('mongodb://localhost/marvin');
+
 require('./routes/routes')(app, express);
 
 app.get('*', function(request,response){

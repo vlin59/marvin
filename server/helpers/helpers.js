@@ -23,6 +23,7 @@ exports.searchEventBrite = function(category, query, lat, long, cb) {
   });
 }
 
+
 exports.searchSpotify = function(state, cb){
   var options = 'https://api.spotify.com/v1/search/?q=' + state +
   '&type=track';
@@ -31,3 +32,11 @@ exports.searchSpotify = function(state, cb){
     cb(res.body);
   });
 }
+
+exports.searchMoviesDB = function(cb){
+  request('http://api.themoviedb.org/3/movie/now_playing?api_key=9044e2a43187859b81537a54bf7d6874',
+    function(error,res,res){
+      cb(JSON.parse(res.body));
+    });
+}
+
