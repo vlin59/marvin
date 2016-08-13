@@ -2,7 +2,10 @@ const helpers = require('../helpers/helpers');
 const google = require('../helpers/google');
 const lights = require('../helpers/lights');
 const twilio = require('../helpers/twilio');
+<<<<<<< efce8379f4419456072b52f526f80f4686c3aa6b
 const stormpath = require('stormpath-express');
+=======
+>>>>>>> (feat) Add mongo models
 
 module.exports = function(app, express) {
 
