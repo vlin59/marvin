@@ -12,7 +12,7 @@ export default class MusicPlayer extends React.Component {
       input: '',
       tracks: [],
       track: null,
-      trackName: '',
+      curTrack: null,
       playing: false
     }
   }
@@ -23,7 +23,6 @@ export default class MusicPlayer extends React.Component {
     this.setState({
       input: val.value
     });
-    console.log(this.state);
   }
 
   searchMusic(track) {
@@ -32,7 +31,6 @@ export default class MusicPlayer extends React.Component {
     var context = this;
 
     axios.post('/api/spotify', { q:track }).then(function(data) {
-      console.log(data.data.tracks.items);
       context.props.setTracks(data.data.tracks.items);
       context.setState({
         tracks: data.data.tracks.items
@@ -48,7 +46,7 @@ export default class MusicPlayer extends React.Component {
     this.setState({
       playing: false,
       track: new Audio(this.state.tracks[i].preview_url),
-      trackName: this.state.tracks[i].name
+      curTrack: this.state.tracks[i].album.images[0].url
     });
   }
 
@@ -63,9 +61,11 @@ export default class MusicPlayer extends React.Component {
     return (
       <div>
         <input type="text" id="track-input" onChange={this.handleChange.bind(this)}></input>
-        <button onClick={this.searchMusic.bind(this, this.state.input)}>Submit</button>
+        <button onClick={this.searchMusic.bind(this, this.state.input)}>Search Tracks</button>
         <div>
-          <div>Current Track Selected: { this.state.trackName }</div>
+          <div>Current Track Selected:
+            <img src={ this.state.curTrack } height="80px"></img>
+          </div>
           <button onClick={ this.playPauseTrack.bind(this) } >Play/Pause</button>
           { this.state.tracks.map((track, i) => {
               return (
