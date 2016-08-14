@@ -2,17 +2,13 @@ const helpers = require('../helpers/helpers');
 const google = require('../helpers/google');
 const lights = require('../helpers/lights');
 const twilio = require('../helpers/twilio');
-<<<<<<< efce8379f4419456072b52f526f80f4686c3aa6b
-const stormpath = require('stormpath-express');
-=======
->>>>>>> (feat) Add mongo models
+const stormpath = require('express-stormpath');
+const userController = require('../db/controllers/userController');
 
 module.exports = function(app, express) {
 
   /* Database Routes */
-  app.post('/api/user/save', stormpath.loginRequired, function(req,res){
-
-  });
+  app.post('/api/user/save', stormpath.loginRequired, userController.createOrFindUser);
   // This route will handle all database queries for reminders
   app.post('/api/user/events', function(req, res){
     res.send(200);
@@ -20,6 +16,9 @@ module.exports = function(app, express) {
 
   // This route will handle all database queries for reminders
   app.post('/api/user/reminders', function(req, res){
+    //REMINDER
+    //FOR
+    //TWILIO - give phonenumber + message as params
     twilio.sendText(req.body.number, req.body.msg);
     res.send(200);
   });

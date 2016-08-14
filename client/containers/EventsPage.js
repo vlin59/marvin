@@ -12,12 +12,19 @@ class EventsPage extends React.Component{
   }
 
   componentDidUpdate(){
-    console.log('USER DID UPDATE', this.props.user);
+
     if(this.props.user){
-      console.log('REQUEST');
       axios.get('/me')
-      .then(function(data){
-        console.log(data);
+      .then(function(res){
+        const user = {
+          email: res.data.account.email,
+          firstName: res.data.account.givenName,
+          lastName: res.data.account.surname
+        }
+        axios.post('/api/user/save', user)
+        .then(function(res){
+          console.log(res.data);
+        });
       });
     }
 
