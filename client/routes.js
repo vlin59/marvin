@@ -21,7 +21,7 @@ export default(
     <Route path ='register' component ={RegistrationPage} />
     <Route path ='login' component ={LoginPage} />
     <Route path = 'results' component ={ResultsPage}/>
-    <Route path = 'calendarauth' component ={CalendarAuth}/>
+    <Route path = 'calendar/auth' component ={CalendarAuth}/>
     <Route path = 'process' component ={CalendarPage}/>
     <Route path = 'calendar' component ={CalendarPage}/>
     <Route path = 'calendar/new' component ={CalendarAppointment}/>
