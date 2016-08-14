@@ -69,13 +69,18 @@ module.exports = function(app, express) {
   });
 
   /* Calendar Routes */
-  app.post('/calendarauth', function(req, res){
+  app.post('/calendar/auth', function(req, res){
 
     const code = req.query.code;
 
     google.getGoogleAuth(function(url){
       res.send(200, url);
     });
+  });
+
+  app.post('/calendar/save', function(req, res){
+
+
   });
 
   app.post('/google', function(req, res){

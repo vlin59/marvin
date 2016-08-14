@@ -17,7 +17,7 @@ class CalendarAuth extends React.Component {
 
   getToken(cb){
 
-    axios.post('/calendarauth')
+    axios.post('/calendar/auth')
     .then(function (data) {
       cb(data.data);
     })

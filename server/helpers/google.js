@@ -66,3 +66,7 @@ function listEvents (auth, cb) {
 
   });
 }
+
+function addEvent(auth, cb){
+
+}
