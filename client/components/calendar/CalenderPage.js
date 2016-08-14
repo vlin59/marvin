@@ -19,7 +19,6 @@ class CalendarPage extends React.Component {
     super(props);
   }
 
-
   componentWillMount(){
     var context = this;
     const code = this.props.location.query.code;
@@ -40,17 +39,6 @@ class CalendarPage extends React.Component {
     });
 
 
-
-  }
-
-  convertDate(time){
-    var date = new Date(Date.parse(time));
-    return date.toString();
-  }
-
-
-  componentWillReceiveProps(){
-    this.formatEvents(this.props.events);
   }
 
   getEvents(code, cb){
@@ -72,14 +60,23 @@ class CalendarPage extends React.Component {
   formatEvents(events){
     var final = [];
 
-    console.log(events);
     events.forEach(function(event) {
+      var startDate;
+      var endDate;
+
+      if(event.start.dateTime){
+        startDate = new Date(event.start.dateTime);
+        endDate = new Date(event.end.dateTime);
+      } else {
+        startDate = new Date(event.start.date);
+        endDate = new Date(event.end.date);
+      }
 
       final.push({
-        start: event.start.date,
-        end: event.end.date,
-        title: event.summary,
-        month: moment(event.start.date).format("MM")
+        event: event,
+        start: startDate,
+        end: endDate,
+        title: event.summary
       });
     });
 
@@ -114,14 +111,19 @@ class CalendarPage extends React.Component {
         <h1>Your Calendar</h1>
         <BigCalendar
           selectable
-          defaultView='week'
+          defaultView='month'
+          culture="en"
           events={this.props.events}
-          popup={true}
           onSelectEvent={event => alert(event.title)}
+          startAccessor='start'
+          endAccessor='end'
         />
+
+
       </Loader>
 
       </div>
+
     )
   }
 
@@ -140,11 +142,3 @@ function mapDispatchToProps (dispatch) {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CalendarPage);
-
-
- // <BigCalendar
- //          events={this.formatEvents}
- //          startAccessor='start'
- //          endAccessor='end'
- //          titleAccessor='title'
- //        />

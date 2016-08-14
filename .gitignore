@@ -1,5 +1,8 @@
 ### node etc ###
 
+#twilio
+server/config
+
 #stormpath
 stormpath.yml
 

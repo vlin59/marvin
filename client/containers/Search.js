@@ -1,5 +1,6 @@
 import React from 'react';
-import { setEvents } from '../actions/index.js'
+import { setEvents } from '../actions/index.js';
+import { setMovies } from '../actions/index.js';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
@@ -25,7 +26,8 @@ var categories = [
   { value: 117, cat: 'Home & Lifestyle' },
   { value: 118, cat: 'Auto, Boat & Air' },
   { value: 119, cat: 'Hobbies & Special Interests' },
-  { value: 199, cat: 'Other' }
+  { value: 199, cat: 'Other' },
+  { value: 999,  cat: 'In Theaters'}
 ]
 
 class Search extends React.Component {
@@ -36,6 +38,9 @@ class Search extends React.Component {
       lat: '0.0',
       long: '0.0'
     }
+
+    this.searchEvents = this.searchEvents.bind(this);
+    this.clickHander = this.clickHandler.bind(this);
 
     navigator.geolocation.getCurrentPosition(position => {
       this.setState({
@@ -54,6 +59,7 @@ class Search extends React.Component {
       category: val.options[val.selectedIndex].value
     })
   }
+
   searchEvents (search) {
     //clear state
     this.props.setEvents([]);
@@ -63,6 +69,26 @@ class Search extends React.Component {
       context.props.setEvents(data.data.events);
     });
     browserHistory.push('/results');
+  }
+
+  searchMovies(){
+    this.props.setMovies([]);
+
+      var context = this;
+      axios.post('/api/moviesdb').then(function(data) {
+        context.props.setMovies(data.data.results);
+      });
+      browserHistory.push('/results');
+  }
+
+
+  clickHandler(){
+    console.log('yyyeee');
+    if(this.state.category.value === 999){
+      this.searchMovies();
+    }else{
+      this.searchEvents(this.state);
+    }
   }
 
   render() {
@@ -76,7 +102,9 @@ class Search extends React.Component {
         </select>
         <input id='query' type='text' value={this.state.query} onChange={this.handleChange.bind(this)}></input>
         <button onClick={
-          this.searchEvents.bind(this, this.state)
+        ()=>{
+          this.clickHandler();
+        }
         }
         >Search Events</button>
       </div>
@@ -88,13 +116,14 @@ function mapStateToProps (state) {
   return {
     search: state
   };
-};
+}
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
-    setEvents: setEvents
+    setEvents: setEvents,
+    setMovies: setMovies
   }, dispatch);
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);
 

@@ -9,7 +9,7 @@ import reducers from './reducers';
 import createLogger from 'redux-logger'
 import promisehandler from './utils/promisehandler';
 
-const createStoreWithMiddleware = applyMiddleware(promisehandler)(createStore);
+const createStoreWithMiddleware = applyMiddleware(promisehandler, createLogger())(createStore);
 
 let store = createStoreWithMiddleware(reducers);
 

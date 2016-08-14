@@ -1,10 +1,14 @@
 const helpers = require('../helpers/helpers');
 const google = require('../helpers/google');
 const lights = require('../helpers/lights');
+const twilio = require('../helpers/twilio');
+const stormpath = require('express-stormpath');
+const userController = require('../db/controllers/userController');
 
 module.exports = function(app, express) {
 
   /* Database Routes */
+  app.post('/api/user/save', stormpath.loginRequired, userController.createOrFindUser);
   // This route will handle all database queries for reminders
   app.post('/api/user/events', function(req, res){
     res.send(200);
@@ -12,6 +16,10 @@ module.exports = function(app, express) {
 
   // This route will handle all database queries for reminders
   app.post('/api/user/reminders', function(req, res){
+    //REMINDER
+    //FOR
+    //TWILIO - give phonenumber + message as params
+    twilio.sendText(req.body.number, req.body.msg);
     res.send(200);
   });
 
@@ -34,9 +42,15 @@ module.exports = function(app, express) {
     var long = req.body.long;
 
     helpers.searchEventBrite(category, query, lat, long, function(data) {
-      res.send(200, data);
+      res.send(201, data);
     });
   });
+
+  app.post('/api/moviesdb', function(req,res){
+    helpers.searchMoviesDB(function(data){
+      res.send(201, data);
+    });
+  })
 
   // This route will handle all API queries for yelp
   // Pass a type as part of request
@@ -55,19 +69,32 @@ module.exports = function(app, express) {
     res.send(200);
   });
 
+  //This route will handle all API queries for the spotify component
+  app.post('/api/spotify', function(req, res){
+    console.log(req.body);
+    helpers.searchSpotify(req.body.q, function(data){
+      res.status(200).send(data);
+    })
+  });
+
     // This route will handle all API queries for the fitbit/wellness component
   app.post('/api/fitbit', function(req, res){
     res.send(200);
   });
 
   /* Calendar Routes */
-  app.post('/calendarauth', function(req, res){
+  app.post('/calendar/auth', function(req, res){
 
     const code = req.query.code;
 
     google.getGoogleAuth(function(url){
       res.send(200, url);
     });
+  });
+
+  app.post('/calendar/save', function(req, res){
+
+
   });
 
   app.post('/google', function(req, res){

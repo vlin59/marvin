@@ -2,7 +2,7 @@ const request = require('request');
 //uncomment for development, will need lightsurl file
 //const lightsurl = require('../../lightsurl');
 
-if (!lightsurl.url) {
+if (!lightsurl) {
   const lightsurl = {
     url: process.env.LIGHTS_URL
   }
