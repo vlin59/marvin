@@ -11,7 +11,10 @@ app.use(cors());
 
 // Routes and middleware
 require('./middleware/middleware')(app, express);
-mongoose.connect('mongodb://localhost/marvin');
+
+// Connect to Database
+let mongouri = process.env.MONGODB_URI || 'mongodb://localhost/marvin'
+mongoose.connect(mongouri);
 
 require('./routes/routes')(app, express);
 
