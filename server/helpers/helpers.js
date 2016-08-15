@@ -41,12 +41,6 @@ exports.searchMoviesDB = function(cb){
     });
 }
 
-exports.searchEventBrite = function(category, query, cb) {
-  request('https://www.eventbriteapi.com/v3/events/search/?categories=' + category + '&q=' + query + '&token=UQOCU57TT67WA4W7V6RE', function(error, res, req) {
-    cb(JSON.parse(res.body));
-  });
-}
-
 exports.searchMovies = function(){
   request('http://api.themoviedb.org/3/movie/now_playing?api_key=+'+moviedbAPI, function(error,res,req){
     cb(JSON.parse(res.body));
