@@ -13,7 +13,7 @@ app.use(cors());
 require('./middleware/middleware')(app, express);
 
 // Connect to Database
-let mongouri = process.env.MONGODB_URI || 'mongodb://localhost/marvin'
+const mongouri = process.env.MONGODB_URI || 'mongodb://localhost/marvin';
 mongoose.connect(mongouri);
 
 require('./routes/routes')(app, express);
