@@ -12,6 +12,7 @@ import CalendarPage from './components/calendar/CalenderPage';
 import CalendarAppointment from './components/calendar/CalendarAppointment';
 import MusicPlayer from './components/music/MusicPlayer';
 import Dashboard from './containers/Dashboard';
+import Todo from './components/todo/Todo';
 
 
 
@@ -27,6 +28,7 @@ export default(
     <Route path = 'calendar/new' component ={CalendarAppointment}/>
     <Route path = 'music' component ={MusicPlayer}/>
     <Route path = 'dashboard' component ={Dashboard}/>
+    <Route path = 'todo' component ={Todo}/>
     <LogoutRoute path = 'logout' />
   </Route>
   )

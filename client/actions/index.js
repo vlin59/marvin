@@ -5,6 +5,8 @@ export const SET_CALENDAR = 'SET_CALENDAR';
 export const SET_TRACKS = 'SET_TRACKS';
 export const SET_LIGHTS = 'SET_LIGHTS';
 export const SET_MOVIES = 'SET_MOVIES';
+export const SET_TODOS = 'SET_TODOS';
+
 
 export function setCalendar(events) {
   return {
@@ -32,7 +34,7 @@ export function setLights (lights) {
   return {
     type: SET_LIGHTS,
     payload: lights
-  }
+  };
 }
 
 
@@ -40,5 +42,12 @@ export function setMovies(movies) {
   return{
     type: SET_MOVIES,
     payload: movies
-  }
+  };
+}
+
+export function setTodos (todos) {
+  return {
+    type: SET_TODOS,
+    payload: todos
+  };
 }
