@@ -37,8 +37,7 @@ class Search extends React.Component {
     this.state = {
       query: '',
       lat: '0.0',
-      long: '0.0',
-      recognized: ''
+      long: '0.0'
     }
 
     this.searchEvents = this.searchEvents.bind(this);
