@@ -2,6 +2,7 @@ const helpers = require('../helpers/helpers');
 const google = require('../helpers/google');
 const lights = require('../helpers/lights');
 const twilio = require('../helpers/twilio');
+const weather = require('../helpers/weather');
 const stormpath = require('express-stormpath');
 const userController = require('../db/controllers/userController');
 
@@ -120,5 +121,14 @@ module.exports = function(app, express) {
     });
   });
 
+
+  app.get('/api/weather', function(req, res){
+    const lat = req.query.lat;
+    const lon = req.query.lon;
+    console.log(req.query);
+    weather.getData(lat, lon, function (forecast) {
+      res.send(forecast);
+    });
+  })
 
 }

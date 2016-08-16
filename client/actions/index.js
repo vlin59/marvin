@@ -6,6 +6,7 @@ export const SET_TRACKS = 'SET_TRACKS';
 export const SET_LIGHTS = 'SET_LIGHTS';
 export const SET_MOVIES = 'SET_MOVIES';
 export const SET_TODOS = 'SET_TODOS';
+export const SET_WEATHER = 'SET_WEATHER';
 
 
 export function setCalendar(events) {
@@ -51,3 +52,12 @@ export function setTodos (todos) {
     payload: todos
   };
 }
+
+export function setWeather (weather) {
+  return {
+    type: SET_WEATHER,
+    payload: weather
+  };
+}
+
+

@@ -1,12 +1,12 @@
 const request = require('request');
 //uncomment for development, will need lightsurl file
-//const lightsurl = require('../../lightsurl');
+const lightsurl = require('../../lightsurl');
 
-if (!lightsurl) {
-  const lightsurl = {
-    url: process.env.LIGHTS_URL
-  }
-};
+// if (!lightsurl) {
+//   const lightsurl = {
+//     url: process.env.LIGHTS_URL
+//   }
+// };
 
 //function to get the status of the light on/off
 exports.getStatus = function (cb) {

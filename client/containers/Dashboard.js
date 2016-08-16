@@ -4,12 +4,13 @@ import { bindActionCreators } from 'redux';
 import MusicPlayer from '../components/music/MusicPlayer';
 import Lights from '../components/lights/Lights';
 import Todos from '../components/todo/Todo';
+import Weather from '../components/weather/Weather';
 
 const components = [
   { title: 'Music Player',      component: <MusicPlayer />, boot: 'col-xs-6' },
   { title: 'Saved Events',      component: null ,           boot: 'col-xs-6' },
   { title: 'Reminders',         component: null ,           boot: 'col-xs-6' },
-  { title: 'Todays Weather',    component: null ,           boot: 'col-xs-6' },
+  { title: 'Todays Weather',    component: <Weather />,     boot: 'col-xs-6' },
   { title: 'Interests',         component: null ,           boot: 'col-xs-6' },
   { title: 'To-do List',        component: <Todos />,       boot: 'col-xs-6' },
   { title: 'Calendar',          component: null ,           boot: 'col-xs-6' },

@@ -1,8 +1,8 @@
-import { SET_LIGHTS } from '../actions/index.js';
+import { SET_WEATHER } from '../actions/index.js';
 
 export default function (state = [], action) {
   switch (action.type) {
-    case SET_LIGHTS:
+    case SET_WEATHER:
       return action.payload;
   }
 
