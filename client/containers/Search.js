@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
 import { browserHistory } from 'react-router';
+import Transcriber from '../components/transcriber/Transcriber';
 
 var categories = [
   { value: 103, cat: 'Music' },
@@ -80,6 +81,11 @@ class Search extends React.Component {
       });
       browserHistory.push('/results');
   }
+  onTranscription(recognized) {
+    this.setState({
+      query: this.state.query + recognized,
+    });
+  }
 
 
   clickHandler(){
@@ -94,6 +100,7 @@ class Search extends React.Component {
   render() {
     return (
       <div>
+        <Transcriber onTranscription={this.onTranscription.bind(this)} />
         <select id='category-select' onChange={this.handleChange.bind(this)}>
             { categories.map(obj => {
                 return <option value={ obj.value }>{ obj.cat }</option>
