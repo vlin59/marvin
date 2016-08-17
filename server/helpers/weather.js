@@ -1,7 +1,7 @@
 const request = require('request');
 //const WEATHER = require ('../config/weatherconfig.js');
 
-const APPID = process.env.WEATHER_APPID || WEATHER.APPID;
+const APPID = process.env.WEATHER_APPID //|| WEATHER.APPID;
 
 
 //function to get the status of the light on/off
