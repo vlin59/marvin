@@ -4,11 +4,7 @@ import { bindActionCreators } from 'redux';
 import MusicPlayer from '../components/music/MusicPlayer';
 import Lights from '../components/lights/Lights';
 import Todos from '../components/todo/Todo';
-<<<<<<< ebac888cc6a6c51899d0d79a0470f4ae5a9831a2
 import Weather from '../components/weather/Weather';
-
-=======
->>>>>>> (clean) Clean up code and rename functions
 import ResizableAndMovable from 'react-resizable-and-movable';
 
 const style = {
