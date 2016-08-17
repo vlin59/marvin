@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { browserHistory } from 'react-router';
 import ReactStormpath, { Router, AuthenticatedRoute, LoginLink } from 'react-stormpath';
 import { applyMiddleware, createStore } from 'redux';
+import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import routes from './routes';
 import reducers from './reducers';
 import createLogger from 'redux-logger'
