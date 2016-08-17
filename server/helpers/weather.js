@@ -1,5 +1,5 @@
 const request = require('request');
-const WEATHER = require ('../config/weatherconfig.js');
+//const WEATHER = require ('../config/weatherconfig.js');
 
 const APPID = process.env.WEATHER_APPID || WEATHER.APPID;
 
