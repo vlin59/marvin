@@ -5,6 +5,16 @@ import MusicPlayer from '../components/music/MusicPlayer';
 import Lights from '../components/lights/Lights';
 import Todos from '../components/todo/Todo';
 
+import ResizableAndMovable from 'react-resizable-and-movable';
+
+const style = {
+  textAlign: 'center',
+  padding: '20px',
+  border: 'solid 3px #fff',
+  borderRadius: '5px',
+  color: '#fff',
+};
+
 const components = [
   { title: 'Music Player',      component: <MusicPlayer />, boot: 'col-xs-6' },
   { title: 'Saved Events',      component: null ,           boot: 'col-xs-6' },
@@ -22,6 +32,10 @@ const components = [
 class Dashboard extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      x: 20,
+      y: 20
+    }
   }
 
   render() {
@@ -30,9 +44,24 @@ class Dashboard extends React.Component {
         {
           components.map(comp => {
           return (
-            <div className={ comp.boot }> { comp.title }
+
+            <ResizableAndMovable
+              x={this.state.x}
+              y={this.state.y}
+              width={200}
+              height={200}
+              style={style}
+              minWidth={200}
+              minHeight={200}
+              maxWidth={800}
+              maxHeight={300}
+              moveGrid={[20, 20]}
+              resizeGrid={[20, 20]}
+              >
+            <div> { comp.title }
               <div> { comp.component } </div>
             </div>
+            </ResizableAndMovable>
             )
           })
         }
