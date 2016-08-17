@@ -9,19 +9,24 @@ export default class Weather extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      weather: []
+      weather: {}
     }
   }
 
-  getCurrentPosition(){
-    navigator.geolocation.getCurrentPosition(position => {
-      query.params.lat = position.coords.latitude.toString();
-      query.params.lon = position.coords.longitude.toString();
-    });
+  titleCase(str) {
+    var str = str.toLowerCase().split(' ');
+    for(var i = 0; i < str.length; i++){
+      str[i] = str[i].split('');
+      str[i][0] = str[i][0].toUpperCase();
+      str[i] = str[i].join('');
+    }
+    return str.join(' ');
   }
 
+
+
   getWeather() {
-    this.props.setWeather([]);
+    this.props.setWeather({});
     var context = this;
     var query = {
       params: {
@@ -34,7 +39,7 @@ export default class Weather extends React.Component {
       query.params.lon = position.coords.longitude.toString();
       axios.get('/api/weather', query)
       .then(function(data) {
-        console.log('weather data', data.data);
+        //console.log('weather data', data.data.city.name);
         context.props.setWeather(data.data);
         context.setState({
           weather: data.data
@@ -48,12 +53,29 @@ export default class Weather extends React.Component {
   }
 
   render() {
+    var weather = this.state.weather;
+    var city = weather.name || '';
+    var main = weather.main || '';
+    var description = '';
+    var high = '';
+    var low = '';
+    var current = '';
+
+    if (main !== '') {
+      high ="Highs: " + Math.round(weather.main.temp_max) + "\xB0";
+      low = "Lows: "+ Math.round(weather.main.temp_min) + "\xB0";
+      current = Math.round(weather.main.temp) + "\xB0";
+      description = this.titleCase.call(this, weather.weather[0].description.toString());
+    }
+
+
     return (
       <div>
-        <h3>Weather</h3>
-        <div>
-         <h3>{JSON.stringify(this.state.weather)}</h3>
-        </div>
+          <h3>{city}</h3>
+          <h1>{current}</h1>
+          <h4>{high}</h4>
+          <h4>{low}</h4>
+          <h4>{description}</h4>
       </div>
     )
   }
