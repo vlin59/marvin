@@ -4,8 +4,11 @@ import { bindActionCreators } from 'redux';
 import MusicPlayer from '../components/music/MusicPlayer';
 import Lights from '../components/lights/Lights';
 import Todos from '../components/todo/Todo';
+<<<<<<< ebac888cc6a6c51899d0d79a0470f4ae5a9831a2
 import Weather from '../components/weather/Weather';
 
+=======
+>>>>>>> (clean) Clean up code and rename functions
 import ResizableAndMovable from 'react-resizable-and-movable';
 
 const style = {
@@ -38,33 +41,29 @@ class Dashboard extends React.Component {
     }
   }
 
-  printChange(i, dir, styleSize) {
+  sizeChange(i, dir, styleSize) {
     components[i].w = styleSize.width;
     components[i].h = styleSize.height;
 
     this.setState({
       components: components
     })
-
-    console.log(this.state.components[i]);
   }
 
-  printDrag(i, e, ui) {
+  positionChange(i, e, ui) {
     components[i].x = ui.position.left;
     components[i].y = ui.position.top;
 
     this.setState({
       components: components
     })
-
-    console.log(this.state.components[i]);
   }
 
   render() {
     return (
       <div>
         {
-          this.state.components.map((comp, i) => {
+        this.state.components.map((comp, i) => {
           return (
             <ResizableAndMovable
               x={comp.x}
@@ -78,12 +77,12 @@ class Dashboard extends React.Component {
               maxHeight={300}
               moveGrid={[20, 20]}
               resizeGrid={[20, 20]}
-              onResize={this.printChange.bind(this, i)}
-              onDrag= { this.printDrag.bind(this, i)}
+              onResize={this.sizeChange.bind(this, i)}
+              onDrag= { this.positionChange.bind(this, i)}
               >
-            <div> { comp.title }
-              <div> { comp.component } </div>
-            </div>
+              <div> { comp.title }
+                <div> { comp.component } </div>
+              </div>
             </ResizableAndMovable>
             )
           })
