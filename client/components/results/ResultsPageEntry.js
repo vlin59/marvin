@@ -34,7 +34,7 @@ export default class ResultsPageEntry extends React.Component {
       </div>
 
       <div className="row">
-        <FontAwesome name='rocket'size='2x' />
+        <FontAwesome name='plus' size='1x' />
         <Link to={{ pathname: '/calendar/new', query: {id: `${this.props.event.id}`} }} >Add to Calendar</Link>
       </div>
     </div>
