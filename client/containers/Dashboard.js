@@ -16,16 +16,14 @@ const style = {
 };
 
 var components = [
-  { title: 'Music Player',      component: <MusicPlayer />, x: 20, y: 20, w: 200, h: 200 },
-  { title: 'Saved Events',      component: null ,           x: 20, y: 220, w: 200, h: 200 },
-  { title: 'Reminders',         component: null ,           x: 20, y: 420, w: 200, h: 200 },
-  { title: 'Todays Weather',    component: <Weather />,     x: 220, y: 20, w: 200, h: 200 },
-  { title: 'Interests',         component: null ,           x: 420, y: 20, w: 200, h: 200 },
-  { title: 'To-do List',        component: <Todos />,       x: 620, y: 20, w: 200, h: 200 },
-  { title: 'Calendar',          component: null ,           x: 220, y: 220, w: 200, h: 200 },
-  { title: 'Wellness Tracker',  component: null ,           x: 420, y: 220, w: 200, h: 200 },
-  { title: 'Lights',            component: <Lights />,      x: 220, y: 420, w: 200, h: 200 },
-  { title: 'Payment Reminders', component: null ,           x: 420, y: 420, w: 200, h: 200 }
+  { title: 'Music Player',      component: <MusicPlayer />, x: 200, y: 20, w: 300, h: 350 },
+  { title: 'Saved Events',      component: null ,           x: 200, y: 400, w: 300, h: 350 },
+  { title: 'Reminders',         component: null ,           x: 540, y: 400, w: 300, h: 350 },
+  { title: 'Todays Weather',    component: <Weather />,     x: 540, y: 20, w: 300, h: 350 },
+  { title: 'Interests',         component: null ,           x: 880, y: 20, w: 300, h: 350 },
+  { title: 'To-do List',        component: <Todos />,       x: 1220, y: 20, w: 300, h: 350 },
+  { title: 'Wellness Tracker',  component: null ,           x: 1220, y: 400, w: 300, h: 350 },
+  { title: 'Lights',            component: <Lights />,      x: 880, y: 400, w: 300, h: 350 }
 ];
 
 class Dashboard extends React.Component {
@@ -49,6 +47,9 @@ class Dashboard extends React.Component {
     components[i].x = ui.position.left;
     components[i].y = ui.position.top;
 
+    console.log("X is ", components[i].x);
+    console.log("Y is ", components[i].y);
+
     this.setState({
       components: components
     })
@@ -66,16 +67,15 @@ class Dashboard extends React.Component {
               width={ comp.w }
               height={ comp.h }
               style={style}
-              minWidth={200}
-              minHeight={200}
-              maxWidth={800}
-              maxHeight={300}
+              minWidth={300}
+              minHeight={500}
               moveGrid={[20, 20]}
               resizeGrid={[20, 20]}
               onResize={this.sizeChange.bind(this, i)}
               onDrag= { this.positionChange.bind(this, i)}
+              className="widget"
               >
-              <div> { comp.title }
+              <div className="marvin-teal"><h1>{ comp.title }</h1>
                 <div> { comp.component } </div>
               </div>
             </ResizableAndMovable>
@@ -99,4 +99,3 @@ function mapDispatchToProps (dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
-
