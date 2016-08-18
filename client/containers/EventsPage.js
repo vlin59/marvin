@@ -31,20 +31,19 @@ class EventsPage extends React.Component{
   }
 
   render (){
-    console.log('RENDER USER',this.props.user)
     return(
       <div className="top">
-        <div className="text-xs-center midnight-blue">
+        <div className="text-xs-center">
           <div className="row">
             <div className="col-md-5 text-xs-right">
-              <img className="marvin-img marvin-rotate" src="styles/marvin_color.png" />
+              <img className="marvin-img marvin-rotate" src="styles/marvin_robot.png" />
             </div>
 
-            <div className="col-md-5 marvin-intro">
+            <div className="col-md-6 marvin-intro">
             <div className="row">
-              <h2 className="marvin-headline">Marvin</h2>
-              <p className="lead">Your Intuitive Personal Butler</p>
-              <p>Outsource all the hard work to Marvin who will help you organize your life and find fun things to do - minus the trouble of planning.</p>
+              <h2 className="marvin-headline marvin-yellow">Hello, I'm Marvin</h2>
+              <p className="lead white">Your Intuitive Personal Butler</p>
+              <p className="white">Outsource all the hard work to Marvin who will help you organize your life and find fun things to do - minus the trouble of planning.</p>
             </div>
 
              <div className="row text-xs-center">
