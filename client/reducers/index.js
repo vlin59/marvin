@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
 import EventsReducer from './reducer_events';
 import UserReducer from './reducer_user';
 import CalendarReducer from './reducer_calendar';
@@ -13,8 +12,7 @@ import LightsReducer from './reducer_lights';
     calendar: CalendarReducer,
     movies: MoviesReducer,
     weather: WeatherReducer,
-    lights: LightsReducer,
-    routing: routerReducer
+    lights: LightsReducer
   });
 
 export default rootReducer;
