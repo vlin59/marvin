@@ -40,8 +40,8 @@ export default class Lights extends React.Component {
   render(){
     return (
     <div>
-      <div>{this.state.lights}</div>
-      <button onClick={this.toggleLights.bind(this)}>Toggle Lights
+      <div>Lights are currently: {this.state.lights}</div>
+      <button className="btn btn-default" onClick={this.toggleLights.bind(this)}>Toggle Lights
       </button>
     </div>
     )
