@@ -2,11 +2,19 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background: #ecf0f1;
+/*  background-color: #3498db;*/
+/*  background: #298eb2;*/
+  background-color: #298eb2;
+  background-image: url("marvin-bg-blue-faded.png");
+  background-repeat: repeat;
 }
 
 .top {
  margin-top: 10%;
+}
+
+.container {
+  max-width: 1500px;
 }
 
 .event-container {
@@ -48,6 +56,76 @@ body {
   text-transform: uppercase;
 }
 
+/* Bootstrap Overrides */
+
+.navbar-light .navbar-brand {
+  color: #fff;
+}
+
+.navbar-light .navbar-nav .active>.nav-link {
+  color: #fff;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #fff;
+}
+
+
+.btn-circle {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+  background-color: #f7cc33;
+  color: #2c3e50;
+  border: 2px solid #e9b931;
+}
+
+.btn {
+  -webkit-transition: 150ms;
+  transition: 150ms;
+  display: inline-block;
+  background: #ef494f;
+  color: white;
+  border-style: solid;
+  border-width: 0 0 4px 0;
+  border-color: #a73337;
+  border-radius: 3px;
+  text-decoration: none;
+  box-shadow: none;
+  margin-right: 7px;
+}
+
+.btn:hover {
+  background: #ff5d63;
+}
+
+/* Colors */
+
 .midnight-blue {
   color: #2c3e50;
+}
+
+.marvin-yellow {
+  color: #f7cc33;
+}
+
+.white {
+  color: #fff;
+}
+
+.spinner {
+  display: none;
+}
+
+.marvin-loader {
+  position: absolute;
+  background: url('marvin-loader.gif');
+  height: 500;
+  width: 500;
+  top: 50%;
+  left: 50%;
+
 }
