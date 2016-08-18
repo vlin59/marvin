@@ -102,21 +102,26 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div>
-        <Transcriber onTranscription={this.onTranscription.bind(this)} />
-        <select id='category-select' onChange={this.handleChange.bind(this)}>
+      <div className="row form-group">
+
+      <div className="col-md-3">
+        <select id='category-select' className="form-control" onChange={this.handleChange.bind(this)}>
             { categories.map(obj => {
                 return <option value={ obj.value }>{ obj.cat }</option>
               })
             }
         </select>
-        <input id='query' type='text' value={this.state.query} onChange={this.handleChange.bind(this)}></input>
-        <button onClick={
-        ()=>{
-          this.clickHandler();
-        }
-        }
-        >Search Events</button>
+      </div>
+      <div className="col-md-6">
+        <input id='query' type='text' className="form-control" value={this.state.query} onChange={this.handleChange.bind(this)}></input>
+      </div>
+
+      <div className="col-md-3">
+       <button onClick={()=>{this.clickHandler()}} className="btn btn-default">
+          Search Events
+        </button>
+        <Transcriber onTranscription={this.onTranscription.bind(this)} />
+      </div>
       </div>
       )
   }

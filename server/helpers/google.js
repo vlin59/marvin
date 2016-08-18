@@ -1,6 +1,8 @@
 const google = require('googleapis');
 const OAuth2Client = google.auth.OAuth2;
 const request = require('request');
+const googleController = require('../db/controllers/tokenController');
+
 
 const CLIENT_ID = '4395616523-imnbjk054edvhhb4hjn57dp0n0927tfn.apps.googleusercontent.com';
 const CLIENT_SECRET = 'xyg2EeaLdOpBHgj9IYLWhwy2';
@@ -29,6 +31,8 @@ exports.getGoogleToken = function(code, cb){
     if(!err) {
       oauth2Client.setCredentials(tokens);
 
+      googleController.storeToken(tokens);
+
       listEvents(oauth2Client, function(events){
         cb(events);
       });
@@ -42,6 +46,46 @@ exports.getGoogleAuth = function(cb){
 
   getAccessToken(oauth2Client, function(url){
     cb(url);
+  });
+
+}
+
+exports.saveToCalendar = function(params, cb){
+
+  var event = {
+    'summary': params.event.name.text,
+    'description': params.event.description.text,
+    'start': {
+      'dateTime': params.event.start.local,
+      'timeZone': params.event.start.timezone
+    },
+    'end': {
+      'dateTime': params.event.start.local,
+      'timeZone': params.event.start.timezone
+    },
+    'reminders': {
+      'useDefault': false,
+      'overrides': [
+        {'method': 'email', 'minutes': 24 * 60},
+        {'method': 'popup', 'minutes': 10}
+      ]
+    }
+  };
+
+  const calendar = google.calendar('v3');
+
+  calendar.events.insert({
+    auth: oauth2Client,
+    calendarId: 'primary',
+    resource: event
+  }, function(err, response) {
+    if (err) {
+      console.log('The API returned an error: ' + err);
+      return;
+    }
+
+    cb(response);
+
   });
 
 }

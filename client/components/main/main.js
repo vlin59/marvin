@@ -12,7 +12,7 @@ export default class main extends React.Component {
     return (
       <div className="container-fluid">
       <Nav />
-      <div>
+      <div className="container-fluid">
         <div className="row">
           {this.props.children}
         </div>

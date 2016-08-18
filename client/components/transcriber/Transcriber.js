@@ -1,5 +1,7 @@
 import React from 'react';
 import { Component, PropTypes } from 'react';
+import FontAwesome from 'react-fontawesome';
+import classNames from 'classnames';
 
 export default class Transcriber extends Component {
   constructor(props) {
@@ -89,12 +91,18 @@ export default class Transcriber extends Component {
   }
 
   render() {
+
+    const name = classNames({
+      'stop': this.state.isRecording,
+      'microphone': !this.state.isRecording
+    });
+
     const buttonText = this.state.compatible ?
       (!this.state.isRecording ? this.props.textStart : this.props.textStop) :
       'Your browser does not support Speech Recognition.';
     return (
-      <button disabled={!this.state.compatible} onClick={this.beginRecognition.bind(this)}>
-        {buttonText}
+      <button disabled={!this.state.compatible} className="btn btn-default" onClick={this.beginRecognition.bind(this)}>
+        <FontAwesome className="white" name={name} size='1x'/>
       </button>
     );
   }
