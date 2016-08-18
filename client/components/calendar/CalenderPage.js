@@ -107,8 +107,8 @@ class CalendarPage extends React.Component {
 
     return (
       <div className="container">
-       <Loader loaded={this.state.loaded} options={options} className="spinner">
-        <h1>Your Calendar</h1>
+       <Loader loaded={this.state.loaded} options={options} className="marvin-loader">
+        <h1 className="white">Your Calendar</h1>
         <BigCalendar
           selectable
           defaultView='month'
