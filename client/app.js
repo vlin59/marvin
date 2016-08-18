@@ -10,9 +10,14 @@ import reducers from './reducers';
 import createLogger from 'redux-logger'
 import promisehandler from './utils/promisehandler';
 
-const createStoreWithMiddleware = applyMiddleware(promisehandler, createLogger())(createStore);
+const middlewareBrowserHist = routerMiddleware(browserHistory);
 
-let store = createStoreWithMiddleware(reducers);
+const store = createStore(
+  reducers,
+  applyMiddleware(middlewareBrowserHist, promisehandler, createLogger())
+);
+
+const history = syncHistoryWithStore(browserHistory, store);
 
 ReactStormpath.init({
   // Optional: Set if you want to use your own dispatcher or configure one such as 'redux'.
@@ -30,7 +35,7 @@ ReactStormpath.init({
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserHistory}>{routes}</Router>
+    <Router history={history}>{routes}</Router>
   </Provider>
 
   , document.getElementById('app'));
