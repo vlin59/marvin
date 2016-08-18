@@ -54,11 +54,10 @@ class Search extends React.Component {
   handleChange(event) {
     let val = document.getElementById('category-select');
     let qry = document.getElementById('query');
-
     this.setState({
       query: qry.value,
       category: val.options[val.selectedIndex].value
-    })
+    });
   }
 
   searchEvents (search) {
@@ -81,9 +80,13 @@ class Search extends React.Component {
       });
       browserHistory.push('/results');
   }
+
   onTranscription(recognized) {
+    let val = document.getElementById('category-select');
+
     this.setState({
       query: this.state.query + recognized,
+      category: val.options[val.selectedIndex].value
     });
   }
 
