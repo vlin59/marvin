@@ -8,15 +8,21 @@ import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import routes from './routes';
 import reducers from './reducers';
 import createLogger from 'redux-logger';
-import { loadState } from './localStorage';
+import { loadState, saveState } from './localStorage';
 import promisehandler from './utils/promisehandler';
+
+const persistedState = loadState();
 
 const middlewareBrowserHist = routerMiddleware(browserHistory);
 
 const store = createStore(
   reducers,
+  persistedState,
   applyMiddleware(middlewareBrowserHist, promisehandler, createLogger())
 );
+store.subscribe(()=>{
+  saveState(store.getState());
+})
 
 const history = syncHistoryWithStore(browserHistory, store);
 
