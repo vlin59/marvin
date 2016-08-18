@@ -11,6 +11,7 @@ import { loadState, saveState } from './localStorage';
 import promisehandler from './utils/promisehandler';
 
 const persistedState = loadState();
+const createStoreWithMiddleware = applyMiddleware(promisehandler)(createStore);
 
 const store = createStore(
   reducers,
@@ -35,6 +36,7 @@ ReactStormpath.init({
   }
 
 });
+
 
 ReactDOM.render(
   <Provider store={store}>
