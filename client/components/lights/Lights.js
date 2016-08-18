@@ -34,7 +34,7 @@ export default class Lights extends React.Component {
   }
 
   componentWillMount() {
-    // this.getStatus.call(this)
+    this.getStatus.call(this);
   }
 
   render(){
