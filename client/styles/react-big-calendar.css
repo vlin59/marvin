@@ -166,7 +166,8 @@ button.rbc-input::-moz-focus-inner {
 .rbc-event {
   cursor: pointer;
   padding: 2px 5px;
-  background-color: #3174ad;
+  background-color: #ef494f;
+/*  background-color: #3174ad;*/
   border-radius: 5px;
   color: #fff;
 }
@@ -414,7 +415,7 @@ button.rbc-input::-moz-focus-inner {
   min-height: 1em;
 }
 .rbc-day-slot .rbc-time-slot {
-  border-top: 1px solid #f7f7f7;
+  border-top: 1px solid #f7`f7f7;
 }
 .rbc-time-slot {
   -ms-flex: 1 0 0;

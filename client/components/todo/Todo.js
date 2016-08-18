@@ -38,8 +38,8 @@ export default class Todos extends React.Component {
   render() {
     return (
       <div>
-        <input id="todo-input" type="text" onChange={ this.handleChange.bind(this) }></input>
-        <button onClick={ this.addTodo.bind(this, this.state.textInput) }>Add Task</button>
+        <input id="todo-input" className="form-control" type="text" onChange={ this.handleChange.bind(this) }></input>
+        <button className="btn btn-default" onClick={ this.addTodo.bind(this, this.state.textInput) }>Add Task</button>
         <div>
           <h3>Todos</h3>
           <div>
