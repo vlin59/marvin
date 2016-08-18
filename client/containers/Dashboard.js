@@ -19,12 +19,11 @@ var components = [
   { title: 'Music Player',      component: <MusicPlayer />, x: 20, y: 20, w: 200, h: 200 },
   { title: 'Saved Events',      component: null ,           x: 20, y: 220, w: 200, h: 200 },
   { title: 'Reminders',         component: null ,           x: 20, y: 420, w: 200, h: 200 },
-  { title: 'Todays Weather',    component: null ,           x: 220, y: 20, w: 200, h: 200 },
+  { title: 'Todays Weather',    component: <Weather />,     x: 220, y: 20, w: 200, h: 200 },
   { title: 'Interests',         component: null ,           x: 420, y: 20, w: 200, h: 200 },
   { title: 'To-do List',        component: <Todos />,       x: 620, y: 20, w: 200, h: 200 },
   { title: 'Calendar',          component: null ,           x: 220, y: 220, w: 200, h: 200 },
   { title: 'Wellness Tracker',  component: null ,           x: 420, y: 220, w: 200, h: 200 },
-  { title: 'Arduino',           component: null ,           x: 620, y: 220, w: 200, h: 200 },
   { title: 'Lights',            component: <Lights />,      x: 220, y: 420, w: 200, h: 200 },
   { title: 'Payment Reminders', component: null ,           x: 420, y: 420, w: 200, h: 200 }
 ];

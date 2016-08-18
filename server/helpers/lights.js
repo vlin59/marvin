@@ -1,17 +1,11 @@
 const request = require('request');
 //uncomment for development, will need lightsurl file
-// const lightsurl = require('../../lightsurl');
-
-if (!lightsurl) {
-  const lightsurl = {
-    url: process.env.LIGHTS_URL
-  }
-};
+const lightsurl = process.env.LIGHTS_URL || require('../../lightsurl').url;
 
 //function to get the status of the light on/off
 exports.getStatus = function (cb) {
   var light = {};
-  request.get(lightsurl.url, function(error, res, body) {
+  request.get(lightsurl, function(error, res, body) {
     if (error) throw error;
     if(JSON.parse(body).value === null || JSON.parse(body).value === '0') {
       light.status = "off"
@@ -25,7 +19,7 @@ exports.getStatus = function (cb) {
 // function to toggle the light on/off
 exports.toggle = function (cb) {
   var light = {};
-  request.post(lightsurl.url, function(error, res, body) {
+  request.post(lightsurl, function(error, res, body) {
     if (error) throw error;
     if(JSON.parse(body).value === null || JSON.parse(body).value === '0') {
       light.status = "off"
