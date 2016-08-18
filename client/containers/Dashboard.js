@@ -5,7 +5,6 @@ import MusicPlayer from '../components/music/MusicPlayer';
 import Lights from '../components/lights/Lights';
 import Todos from '../components/todo/Todo';
 import Weather from '../components/weather/Weather';
-
 import ResizableAndMovable from 'react-resizable-and-movable';
 
 const style = {
@@ -16,39 +15,55 @@ const style = {
   color: '#fff',
 };
 
-const components = [
-  { title: 'Music Player',      component: <MusicPlayer />, boot: 'col-xs-6' },
-  { title: 'Saved Events',      component: null ,           boot: 'col-xs-6' },
-  { title: 'Reminders',         component: null ,           boot: 'col-xs-6' },
-  { title: 'Todays Weather',    component: <Weather />,     boot: 'col-xs-6' },
-  { title: 'Interests',         component: null ,           boot: 'col-xs-6' },
-  { title: 'To-do List',        component: <Todos />,       boot: 'col-xs-6' },
-  { title: 'Calendar',          component: null ,           boot: 'col-xs-6' },
-  { title: 'Wellness Tracker',  component: null ,           boot: 'col-xs-6' },
-  { title: 'Arduino',           component: null ,           boot: 'col-xs-6' },
-  { title: 'Lights',            component: <Lights />,      boot: 'col-xs-6' },
-  { title: 'Payment Reminders', component: null ,           boot: 'col-xs-6' }
+var components = [
+  { title: 'Music Player',      component: <MusicPlayer />, x: 20, y: 20, w: 200, h: 200 },
+  { title: 'Saved Events',      component: null ,           x: 20, y: 220, w: 200, h: 200 },
+  { title: 'Reminders',         component: null ,           x: 20, y: 420, w: 200, h: 200 },
+  { title: 'Todays Weather',    component: null ,           x: 220, y: 20, w: 200, h: 200 },
+  { title: 'Interests',         component: null ,           x: 420, y: 20, w: 200, h: 200 },
+  { title: 'To-do List',        component: <Todos />,       x: 620, y: 20, w: 200, h: 200 },
+  { title: 'Calendar',          component: null ,           x: 220, y: 220, w: 200, h: 200 },
+  { title: 'Wellness Tracker',  component: null ,           x: 420, y: 220, w: 200, h: 200 },
+  { title: 'Arduino',           component: null ,           x: 620, y: 220, w: 200, h: 200 },
+  { title: 'Lights',            component: <Lights />,      x: 220, y: 420, w: 200, h: 200 },
+  { title: 'Payment Reminders', component: null ,           x: 420, y: 420, w: 200, h: 200 }
 ];
 
 class Dashboard extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      x: 20,
-      y: 20
+      components: components
     }
+  }
+
+  sizeChange(i, dir, styleSize) {
+    components[i].w = styleSize.width;
+    components[i].h = styleSize.height;
+
+    this.setState({
+      components: components
+    })
+  }
+
+  positionChange(i, e, ui) {
+    components[i].x = ui.position.left;
+    components[i].y = ui.position.top;
+
+    this.setState({
+      components: components
+    })
   }
 
   render() {
     return (
       <div>
         {
-          components.map(comp => {
+        this.state.components.map((comp, i) => {
           return (
-
             <ResizableAndMovable
-              x={this.state.x}
-              y={this.state.y}
+              x={comp.x}
+              y={comp.y}
               width={200}
               height={200}
               style={style}
@@ -58,10 +73,12 @@ class Dashboard extends React.Component {
               maxHeight={300}
               moveGrid={[20, 20]}
               resizeGrid={[20, 20]}
+              onResize={this.sizeChange.bind(this, i)}
+              onDrag= { this.positionChange.bind(this, i)}
               >
-            <div> { comp.title }
-              <div> { comp.component } </div>
-            </div>
+              <div> { comp.title }
+                <div> { comp.component } </div>
+              </div>
             </ResizableAndMovable>
             )
           })
