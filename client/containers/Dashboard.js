@@ -63,8 +63,8 @@ class Dashboard extends React.Component {
             <ResizableAndMovable
               x={comp.x}
               y={comp.y}
-              width={200}
-              height={200}
+              width={ comp.w }
+              height={ comp.h }
               style={style}
               minWidth={200}
               minHeight={200}
