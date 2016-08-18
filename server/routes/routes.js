@@ -95,7 +95,11 @@ module.exports = function(app, express) {
 
   app.post('/calendar/save', function(req, res){
 
+    const params = req.body.params;
 
+    google.saveToCalendar(params, function(confirmation){
+      res.send(confirmation);
+    });
   });
 
   app.post('/google', function(req, res){
