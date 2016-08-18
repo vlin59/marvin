@@ -24,7 +24,6 @@ var components = [
   { title: 'To-do List',        component: <Todos />,       x: 620, y: 20, w: 200, h: 200 },
   { title: 'Calendar',          component: null ,           x: 220, y: 220, w: 200, h: 200 },
   { title: 'Wellness Tracker',  component: null ,           x: 420, y: 220, w: 200, h: 200 },
-  { title: 'Arduino',           component: null ,           x: 620, y: 220, w: 200, h: 200 },
   { title: 'Lights',            component: <Lights />,      x: 220, y: 420, w: 200, h: 200 },
   { title: 'Payment Reminders', component: null ,           x: 420, y: 420, w: 200, h: 200 }
 ];
