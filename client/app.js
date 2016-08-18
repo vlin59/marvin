@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { browserHistory } from 'react-router';
 import ReactStormpath, { Router, AuthenticatedRoute, LoginLink } from 'react-stormpath';
 import { applyMiddleware, createStore } from 'redux';
-import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import routes from './routes';
 import reducers from './reducers';
 import createLogger from 'redux-logger';
@@ -13,18 +12,15 @@ import promisehandler from './utils/promisehandler';
 
 const persistedState = loadState();
 
-const middlewareBrowserHist = routerMiddleware(browserHistory);
-
 const store = createStore(
   reducers,
   persistedState,
-  applyMiddleware(middlewareBrowserHist, promisehandler, createLogger())
+  applyMiddleware(promisehandler, createLogger())
 );
 store.subscribe(()=>{
   saveState(store.getState());
 })
 
-const history = syncHistoryWithStore(browserHistory, store);
 
 ReactStormpath.init({
   // Optional: Set if you want to use your own dispatcher or configure one such as 'redux'.
@@ -42,7 +38,7 @@ ReactStormpath.init({
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>{routes}</Router>
+    <Router history={browserHistory}>{routes}</Router>
   </Provider>
 
   , document.getElementById('app'));
