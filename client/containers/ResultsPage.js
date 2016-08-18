@@ -47,7 +47,6 @@ class ResultsPage extends React.Component{
     left: '50%',
     scale: 1.00
   };
-    console.log(this.props.movies);
     return(
       <div className="container">
        <Loader loaded={this.state.loaded} options={options} className="spinner" />
