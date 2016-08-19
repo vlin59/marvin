@@ -5,6 +5,9 @@ const twilio = require('../helpers/twilio');
 const weather = require('../helpers/weather');
 const stormpath = require('express-stormpath');
 const userController = require('../db/controllers/userController');
+const mailer = require('express-mailer');
+
+
 
 module.exports = function(app, express) {
 
@@ -148,6 +151,27 @@ module.exports = function(app, express) {
     weather.getData(lat, lon, function (forecast) {
       res.send(forecast);
     });
-  })
+  });
+
+
+
+//send an email of recipe
+  app.post('/api/email', function(req, res){
+     app.mailer.send('email', {
+      //CHANGE TO THE USER'S EMAIL
+      to: 'trescomma@gmail.com', // REQUIRED. This can be a comma delimited string just like a normal email to field.
+      subject: 'SUBJECT', // REQUIRED.
+      text: 'EMAIL TEXT'
+    }, function (err) {
+      if (err) {
+        // handle error
+        console.log(err);
+        res.send('There was an error sending the email');
+        return;
+      }
+      res.send('Email Sent');
+    });
+  });
+
 
 }
