@@ -34,7 +34,24 @@ module.exports = function(app, express) {
     res.send(200);
   });
 
-  /* API Routes  */
+  app.post('/todos/add', function(req, res){
+    var email = req.body.user;
+    var todos = req.body.todos;
+
+    console.log(todos);
+
+    userController.updateUserTodos(email, todos, function(data) {
+      res.status(200).send(data);
+    })
+  })
+
+  app.post('/todos/get', function(req, res) {
+    var email = req.body.user;
+
+    userController.getUserTodos(email, function(data) {
+      res.status(200).send(data);
+    })
+  });
 
   app.post('/api/eventbrite', function(req, res){
     var query = req.body.query;
@@ -72,7 +89,6 @@ module.exports = function(app, express) {
 
   //This route will handle all API queries for the spotify component
   app.post('/api/spotify', function(req, res){
-    console.log(req.body);
     helpers.searchSpotify(req.body.q, function(data){
       res.status(200).send(data);
     })
@@ -129,7 +145,6 @@ module.exports = function(app, express) {
   app.get('/api/weather', function(req, res){
     const lat = req.query.lat;
     const lon = req.query.lon;
-    console.log(req.query);
     weather.getData(lat, lon, function (forecast) {
       res.send(forecast);
     });

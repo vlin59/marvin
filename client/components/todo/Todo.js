@@ -1,15 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setTodos } from '../../actions/index.js'
+import { setTodos } from '../../actions/index.js';
+import axios from 'axios';
 
 export default class Todos extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: [],
+      todos: this.props.state.todos.data,
       textInput: ''
     }
+  }
+
+  componentDidMount() {
+    this.getTodos();
   }
 
   handleChange() {
@@ -21,17 +26,44 @@ export default class Todos extends React.Component {
   }
 
   addTodo(todo) {
-    this.setState({
-      todos: this.state.todos.concat(todo)
-    })
-
     //Sets text input back to blank
     document.getElementById('todo-input').value = '';
+
+    let data = {
+      todos: this.state.todos.concat(todo),
+      user: this.props.state.user.email
+    }
+    const context = this;
+
+    axios.post('/todos/add', data).then(function(todos) {
+      context.getTodos();
+    })
+  }
+
+  getTodos() {
+    let data = {
+      user: this.props.state.user.email
+    }
+    const context = this;
+
+    axios.post('/todos/get', data).then(function(todos) {
+      context.props.setTodos(todos);
+
+      context.setState({
+        todos: context.props.state.todos.data
+      })
+    })
   }
 
   deleteTodo(i) {
-    this.setState({
-      todos: this.state.todos.filter((x,j) => j !== i)
+    let data = {
+      todos: this.state.todos.filter((x,j) => j !== i),
+      user: this.props.state.user.email
+    }
+    const context = this;
+
+    axios.post('/todos/add', data).then(function(todos) {
+      context.getTodos();
     })
   }
 
@@ -61,7 +93,7 @@ export default class Todos extends React.Component {
 
 function mapStateToProps (state) {
   return {
-    todos: state.todos
+    state: state
   };
 };
 
