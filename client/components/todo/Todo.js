@@ -56,8 +56,14 @@ export default class Todos extends React.Component {
   }
 
   deleteTodo(i) {
-    this.setState({
-      todos: this.state.todos.filter((x,j) => j !== i)
+    let data = {
+      todos: this.state.todos.filter((x,j) => j !== i),
+      user: this.props.state.user.email
+    }
+    const context = this;
+
+    axios.post('/todos/add', data).then(function(todos) {
+      context.getTodos();
     })
   }
 
