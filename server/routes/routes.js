@@ -36,10 +36,12 @@ module.exports = function(app, express) {
 
   app.post('/todos/add', function(req, res){
     var email = req.body.user;
-    var todo = req.body.user;
+    var todos = req.body.todos;
 
-    userController.updateUserTodos(email, todo, function(data) {
-      console.log(data);
+    console.log(todos);
+
+    userController.updateUserTodos(email, todos, function(data) {
+      res.status(200).send(data);
     })
   })
 

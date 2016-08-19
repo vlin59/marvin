@@ -8,9 +8,13 @@ export default class Todos extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: [],
+      todos: this.props.state.todos.data,
       textInput: ''
     }
+  }
+
+  componentDidMount() {
+    this.getTodos();
   }
 
   handleChange() {
@@ -22,26 +26,32 @@ export default class Todos extends React.Component {
   }
 
   addTodo(todo) {
-    this.setState({
-      todos: this.state.todos.concat(todo)
-    })
-
     //Sets text input back to blank
     document.getElementById('todo-input').value = '';
 
     let data = {
-      todos: this.state.todos,
+      todos: this.state.todos.concat(todo),
       user: this.props.state.user.email
     }
     const context = this;
 
-    // axios.post('/todos/add', data).then(function(todos) {
-    //   context.props.setTodos(data.data.todos);
-    // })
+    axios.post('/todos/add', data).then(function(todos) {
+      context.getTodos();
+    })
+  }
+
+  getTodos() {
+    let data = {
+      user: this.props.state.user.email
+    }
+    const context = this;
 
     axios.post('/todos/get', data).then(function(todos) {
-      //context.props.setTodos(data.data.todos);
-      console.log(todos)
+      context.props.setTodos(todos);
+
+      context.setState({
+        todos: context.props.state.todos.data
+      })
     })
   }
 
