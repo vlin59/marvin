@@ -6,7 +6,7 @@ exports.getData = function (lat, lon, cb) {
   lat = lat || '0';
   lon = lon || '0';
   request.get('http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&units=imperial&APPID=' + APPID, function(error, res, body) {
-    if (error) throw error;
+    if (error) {throw error;}
     cb(body);
   });
-}
+};
