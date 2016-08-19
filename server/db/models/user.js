@@ -13,8 +13,8 @@ var userSchema = new mongoose.Schema({
             ref: "EventItem"
         }]
 
-    }
-
+    },
+    todos: []
 });
 
 
