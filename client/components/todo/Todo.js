@@ -35,8 +35,13 @@ export default class Todos extends React.Component {
     }
     const context = this;
 
-    axios.post('/todos/add', data).then(function(todos) {
-      context.props.setTodos(data.data.todos);
+    // axios.post('/todos/add', data).then(function(todos) {
+    //   context.props.setTodos(data.data.todos);
+    // })
+
+    axios.post('/todos/get', data).then(function(todos) {
+      //context.props.setTodos(data.data.todos);
+      console.log(todos)
     })
   }
 

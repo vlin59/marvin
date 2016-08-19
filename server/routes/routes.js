@@ -43,6 +43,14 @@ module.exports = function(app, express) {
     })
   })
 
+  app.post('/todos/get', function(req, res) {
+    var email = req.body.user;
+
+    userController.getUserTodos(email, function(data) {
+      res.status(200).send(data);
+    })
+  });
+
   app.post('/api/eventbrite', function(req, res){
     var query = req.body.query;
     var category = req.body.category;
