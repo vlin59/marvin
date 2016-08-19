@@ -92,7 +92,6 @@ class Search extends React.Component {
 
 
   clickHandler(){
-    console.log('yyyeee');
     if(this.state.category.value === 999){
       this.searchMovies();
     }else{

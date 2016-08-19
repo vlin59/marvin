@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setTodos } from '../../actions/index.js'
+import { setTodos } from '../../actions/index.js';
+import axios from 'axios';
 
 export default class Todos extends React.Component {
   constructor(props) {
@@ -27,6 +28,16 @@ export default class Todos extends React.Component {
 
     //Sets text input back to blank
     document.getElementById('todo-input').value = '';
+
+    let data = {
+      todos: this.state.todos,
+      user: this.props.state.user.email
+    }
+    const context = this;
+
+    axios.post('/todos/add', data).then(function(todos) {
+      context.props.setTodos(data.data.todos);
+    })
   }
 
   deleteTodo(i) {
@@ -61,7 +72,7 @@ export default class Todos extends React.Component {
 
 function mapStateToProps (state) {
   return {
-    todos: state.todos
+    state: state
   };
 };
 
