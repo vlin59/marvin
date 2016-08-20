@@ -116,17 +116,27 @@ module.exports = function(app, express) {
 
     const params = req.body.params;
 
-    google.saveToCalendar(params, function(confirmation){
-      res.send(confirmation);
+    google.queryToken(function(auth){
+       google.saveToCalendar(auth, params, function(confirmation){
+        console.log(confirmation);
+        res.send(confirmation);
+      });
     });
+
+
+
+
+
   });
 
   app.post('/google', function(req, res){
     const code = req.body.params.code;
 
-    google.getGoogleToken(code, function(events){
-      res.send(events);
-    })
+    google.getGoogleToken(code, function(auth){
+      google.listEvents(auth, function(events){
+        res.send(events);
+      });
+    });
 
   });
 

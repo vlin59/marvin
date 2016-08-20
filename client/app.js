@@ -16,7 +16,7 @@ const createStoreWithMiddleware = applyMiddleware(promisehandler)(createStore);
 const store = createStore(
   reducers,
   persistedState,
-  applyMiddleware(promisehandler, createLogger())
+  applyMiddleware(promisehandler)
 );
 store.subscribe(()=>{
   saveState(store.getState());

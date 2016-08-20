@@ -24,22 +24,35 @@ function getAccessToken(oauth2Client, cb) {
 
 }
 
+exports.queryToken = function(cb){
+   googleController.checkToken(function(storedToken){
+    if(storedToken){
+      oauth2Client.setCredentials(storedToken);
+      cb(oauth2Client)
+    }
+   });
+}
 
 exports.getGoogleToken = function(code, cb){
-  oauth2Client.getToken(code, function(err, tokens) {
-    // Now tokens contains an access_token and an optional refresh_token. Save them.
-    if(!err) {
-      oauth2Client.setCredentials(tokens);
 
-      googleController.storeToken(tokens);
+  googleController.checkToken(function(storedToken){
 
-      listEvents(oauth2Client, function(events){
-        cb(events);
+    if(storedToken){
+      oauth2Client.setCredentials(storedToken);
+      cb(oauth2Client);
+    } else {
+      oauth2Client.getToken(code, function(err, tokens) {
+        // Now tokens contains an access_token and an optional refresh_token. Save them.
+        if(!err) {
+          oauth2Client.setCredentials(tokens);
+          googleController.storeToken(tokens);
+          cb(oauth2Client);
+        }
       });
-
     }
 
   });
+
 }
 
 exports.getGoogleAuth = function(cb){
@@ -50,7 +63,7 @@ exports.getGoogleAuth = function(cb){
 
 }
 
-exports.saveToCalendar = function(params, cb){
+exports.saveToCalendar = function(auth, params, cb){
 
   var event = {
     'summary': params.event.name.text,
@@ -75,7 +88,7 @@ exports.saveToCalendar = function(params, cb){
   const calendar = google.calendar('v3');
 
   calendar.events.insert({
-    auth: oauth2Client,
+    auth: auth,
     calendarId: 'primary',
     resource: event
   }, function(err, response) {
@@ -83,14 +96,13 @@ exports.saveToCalendar = function(params, cb){
       console.log('The API returned an error: ' + err);
       return;
     }
-
     cb(response);
 
   });
 
 }
 
-function listEvents (auth, cb) {
+exports.listEvents = function(auth, cb) {
   const calendar = google.calendar('v3');
   calendar.events.list({
     auth: auth,
@@ -109,8 +121,4 @@ function listEvents (auth, cb) {
     cb(events);
 
   });
-}
-
-function addEvent(auth, cb){
-
 }

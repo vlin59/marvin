@@ -61,12 +61,12 @@ export default class MusicPlayer extends React.Component {
     return (
       <div className="marvin-teal">
         <input type="text" className="form-control" id="track-input" onChange={this.handleChange.bind(this)}></input>
-        <button className="btn btn-default" onClick={this.searchMusic.bind(this, this.state.input)}>Search Tracks</button>
+        <button className="btn btn-default btn-padding" onClick={this.searchMusic.bind(this, this.state.input)}>Search Tracks</button>
         <div>
-          <div>Current Track Selected:
+          <div>Current Track Selected:&nbsp;
             <img src={ this.state.curTrack } height="80px"></img>
           </div>
-          <button className="btn btn-default" onClick={ this.playPauseTrack.bind(this) } >Play/Pause</button>
+          <button className="btn btn-default btn-padding" onClick={ this.playPauseTrack.bind(this) } >Play/Pause</button>
           { this.state.tracks.map((track, i) => {
               return (
                 <div className="track-name" onClick={this.setTrack.bind(this, i)}>

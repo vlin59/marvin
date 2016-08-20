@@ -7,7 +7,11 @@ import { connect } from 'react-redux';
 import CalendarEntry from './CalendarEntry';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
+import Modal, { closeStyle } from 'simple-react-modal';
 const Loader = require('react-loader');
+import FontAwesome from 'react-fontawesome';
+
+
 
 // Setup the localizer by providing the moment (or globalize) Object
 // to the correct localizer.
@@ -83,6 +87,25 @@ class CalendarPage extends React.Component {
     return final;
   }
 
+  displayModal(params){
+
+  }
+
+  show(params){
+    this.setState({
+      show: true,
+      title: params.title,
+      start: moment(params.start).format("dddd, MMM Do, h:mm a"),
+      end: moment(params.end).format("dddd, MMM Do, h:mm a"),
+      venue: params.event.location,
+      description: params.event.description
+    });
+  }
+
+  close(){
+    this.setState({show: false})
+  }
+
   render() {
 
     let options = {
@@ -107,18 +130,44 @@ class CalendarPage extends React.Component {
 
     return (
       <div className="container">
-       <Loader loaded={this.state.loaded} options={options} className="marvin-loader">
+       <Loader loaded={this.state.loaded} options={options} className="spinner">
         <h1 className="white">Your Calendar</h1>
         <BigCalendar
           selectable
           defaultView='month'
           culture="en"
           events={this.props.events}
-          onSelectEvent={event => alert(event.title)}
+          onSelectEvent={this.show.bind(this)}
           startAccessor='start'
           endAccessor='end'
         />
+        <Modal
+          closeOnOuterClick={true}
+          show={this.state.show}
+          onClose={this.close.bind(this)}>
 
+          <a style={closeStyle} onClick={this.close.bind(this)}>X</a>
+          <div className="event-modal">
+            <div className="row">
+              <h2 className="event-model-headline">{this.state.title}</h2>
+              <p>{this.state.venue}</p>
+            </div>
+
+            <div className="row">
+              <span className="event-modal-icon"><FontAwesome name='calendar' size='1x' /></span>
+              Start: {this.state.start}
+            </div>
+
+            <div className="row">
+             <span className="event-modal-icon"><FontAwesome name='calendar' size='1x' /></span>
+              End: {this.state.end}
+            </div>
+
+            <div className="row">
+              <p className="event-model-description">{this.state.description}</p>
+            </div>
+          </div>
+        </Modal>
 
       </Loader>
 

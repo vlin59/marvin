@@ -55,6 +55,7 @@
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "request": "^2.74.0",
+    "simple-react-modal": "^0.5.1",
     "twilio": "^2.9.2",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
