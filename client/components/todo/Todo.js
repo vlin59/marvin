@@ -14,7 +14,7 @@ export default class Todos extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.getTodos();
   }
 
