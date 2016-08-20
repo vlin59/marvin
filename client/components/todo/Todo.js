@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setTodos } from '../../actions/index.js';
 import axios from 'axios';
+import FontAwesome from 'react-fontawesome';
 
 export default class Todos extends React.Component {
   constructor(props) {
@@ -71,15 +72,19 @@ export default class Todos extends React.Component {
     return (
       <div>
         <input id="todo-input" className="form-control" type="text" onChange={ this.handleChange.bind(this) }></input>
-        <button className="btn btn-default" onClick={ this.addTodo.bind(this, this.state.textInput) }>Add Task</button>
+        <button className="btn btn-default btn-padding" onClick={ this.addTodo.bind(this, this.state.textInput) }>Add Task</button>
         <div>
           <h3>Todos</h3>
           <div>
             {
               this.state.todos.map((todo, i)=> {
                 return (
-                  <div onClick={this.deleteTodo.bind(this, i)}>
-                    { todo }
+                  <div className="row">
+
+                    <div onClick={this.deleteTodo.bind(this, i)}>
+                      { todo }
+                      <span className="todo-delete"><FontAwesome name="times-circle"size='1x'/></span>
+                    </div>
                   </div>
                 )
               })

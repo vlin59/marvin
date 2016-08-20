@@ -22,6 +22,7 @@ body {
   border-radius: 20px;
   padding: 50px;
   margin-top: 20%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .page h1, h2 {
@@ -122,6 +123,11 @@ body {
   background: #ff5d63;
 }
 
+.btn-padding {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 /* Colors */
 
 .midnight-blue {
@@ -140,10 +146,6 @@ body {
   color: #fff;
 }
 
-.spinner {
-  display: none;
-}
-
 .marvin-loader {
   position: absolute;
   background: url('marvin-loader.gif');
@@ -151,5 +153,26 @@ body {
   width: 500;
   top: 50%;
   left: 50%;
-
 }
+
+.todo-delete {
+  margin-left: 5px;
+}
+
+.event-modal {
+  padding: 20px;
+}
+
+.event-model-headline {
+  color: #ff5d63;
+}
+
+.event-model-description {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.event-modal-icon {
+  margin-right: 5px;
+}
+

@@ -23,7 +23,7 @@ var components = [
   { title: 'Interests',         component: null ,           x: 880, y: 20, w: 300, h: 350 },
   { title: 'To-do List',        component: <Todos />,       x: 1220, y: 20, w: 300, h: 350 },
   { title: 'Wellness Tracker',  component: null ,           x: 1220, y: 400, w: 300, h: 350 },
-  { title: 'Lights',            component: <Lights />,      x: 880, y: 400, w: 300, h: 350 }
+  { title: 'Home Automation',   component: <Lights />,      x: 880, y: 400, w: 300, h: 350 }
 ];
 
 class Dashboard extends React.Component {
@@ -75,7 +75,7 @@ class Dashboard extends React.Component {
               onDrag= { this.positionChange.bind(this, i)}
               className="widget"
               >
-              <div className="marvin-teal"><h1>{ comp.title }</h1>
+              <div className="marvin-teal"><h3>{ comp.title }</h3>
                 <div> { comp.component } </div>
               </div>
             </ResizableAndMovable>

@@ -115,7 +115,7 @@ class Search extends React.Component {
         <input id='query' type='text' className="form-control" value={this.state.query} onChange={this.handleChange.bind(this)}></input>
       </div>
 
-      <div className="col-md-3">
+      <div className="col-md-3 text-xs-left">
        <button onClick={()=>{this.clickHandler()}} className="btn btn-default">
           Search Events
         </button>

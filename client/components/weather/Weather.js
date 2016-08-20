@@ -72,10 +72,10 @@ export default class Weather extends React.Component {
     return (
       <div>
           <h3>{city}</h3>
-          <h1>{current}</h1>
-          <h4>{high}</h4>
-          <h4>{low}</h4>
-          <h4>{description}</h4>
+          <h3>{current}</h3>
+          <h5>{high}</h5>
+          <h5>{low}</h5>
+          <h5>{description}</h5>
       </div>
     )
   }

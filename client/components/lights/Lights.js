@@ -41,7 +41,16 @@ export default class Lights extends React.Component {
     return (
     <div>
       <div>Lights are currently: {this.state.lights}</div>
-      <button className="btn btn-default" onClick={this.toggleLights.bind(this)}>Toggle Lights
+      <button className="btn btn-default btn-padding" onClick={this.toggleLights.bind(this)}>Toggle Lights
+      </button>
+
+      <button className="btn btn-default btn-padding" onClick={this.toggleLights.bind(this)}>Make Coffee
+      </button>
+
+      <button className="btn btn-default btn-padding" onClick={this.toggleLights.bind(this)}>Open Garage Door
+      </button>
+
+      <button className="btn btn-default btn-padding" onClick={this.toggleLights.bind(this)}>Make Victor Disappear
       </button>
     </div>
     )
