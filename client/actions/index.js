@@ -7,7 +7,7 @@ export const SET_LIGHTS = 'SET_LIGHTS';
 export const SET_MOVIES = 'SET_MOVIES';
 export const SET_TODOS = 'SET_TODOS';
 export const SET_WEATHER = 'SET_WEATHER';
-
+export const SET_NEWS = 'SET_NEWS';
 
 export function setCalendar(events) {
   return {
@@ -60,4 +60,10 @@ export function setWeather (weather) {
   };
 }
 
+export function setNews (news) {
+  return {
+    type: SET_NEWS,
+    payload: news
+  };
+}
 
