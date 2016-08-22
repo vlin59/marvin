@@ -6,6 +6,7 @@ import MoviesReducer from './reducer_movies';
 import WeatherReducer from './reducer_weather';
 import LightsReducer from './reducer_lights';
 import TodoReducer from './reducer_todo';
+import NewsReducer from './reducer_news.js';
 
   const rootReducer = combineReducers({
     events: EventsReducer,
@@ -14,7 +15,8 @@ import TodoReducer from './reducer_todo';
     movies: MoviesReducer,
     weather: WeatherReducer,
     lights: LightsReducer,
-    todos: TodoReducer
+    todos: TodoReducer,
+    news: NewsReducer
   });
 
 export default rootReducer;
