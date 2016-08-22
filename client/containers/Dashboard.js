@@ -5,6 +5,7 @@ import MusicPlayer from '../components/music/MusicPlayer';
 import Lights from '../components/lights/Lights';
 import Todos from '../components/todo/Todo';
 import Weather from '../components/weather/Weather';
+import News from '../components/news/News';
 import ResizableAndMovable from 'react-resizable-and-movable';
 
 const style = {
@@ -22,7 +23,7 @@ var components = [
   { title: 'Todays Weather',    component: <Weather />,     x: 540, y: 20, w: 300, h: 350 },
   { title: 'Interests',         component: null ,           x: 880, y: 20, w: 300, h: 350 },
   { title: 'To-do List',        component: <Todos />,       x: 1220, y: 20, w: 300, h: 350 },
-  { title: 'Wellness Tracker',  component: null ,           x: 1220, y: 400, w: 300, h: 350 },
+  { title: 'News',              component: <News />,        x: 1220, y: 400, w: 300, h: 350 },
   { title: 'Home Automation',   component: <Lights />,      x: 880, y: 400, w: 300, h: 350 }
 ];
 
