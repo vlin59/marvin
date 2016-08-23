@@ -60,6 +60,33 @@ class Dashboard extends React.Component {
       <div>
         {
         this.state.components.map((comp, i) => {
+          if (comp.title === 'News') {
+            return (
+              <ResizableAndMovable
+                x={comp.x}
+                y={comp.y}
+                width={ comp.w }
+                height={ comp.h }
+                style={ style }
+                minWidth={ 300 }
+                minHeight={ comp.res || 100 }
+                moveGrid={ [20, 20] }
+                resizeGrid={ [20, 20] }
+                onResize={ this.sizeChange.bind(this, i) }
+                onDrag= { this.positionChange.bind(this, i) }
+                className="widget"
+              >
+                <div className="marvin-teal"><h3>{ comp.title }</h3>
+                  <div>
+                    <News
+                      width={ comp.w }
+                      height={ comp.h }
+                    />
+                  </div>
+                </div>
+              </ResizableAndMovable>
+              )
+          }
           return (
             <ResizableAndMovable
               x={comp.x}
