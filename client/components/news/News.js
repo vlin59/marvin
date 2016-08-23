@@ -9,6 +9,7 @@ export default class News extends React.Component {
     super(props);
     this.state = {
       news: '',
+      default: 'http%3A%2F%2Ffeeds.feedburner.com%2FTechcrunch'
     }
   }
 
@@ -25,20 +26,23 @@ export default class News extends React.Component {
   }
 
   clickHandler() {
-    this.changeFeed(this.state.news);
+    if (!this.state.news){
+      this.changeFeed(this.state.default);
+    } else {
+      this.changeFeed(this.state.news);
+    }
   }
 
+
   componentDidMount() {
-    this.setState({
-      news: 'Input RSS Feed URL'
-    });
+    this.changeFeed(this.state.default);
   }
 
   render() {
     return (
       <div>
         <div>
-          <input id='newsfeed' type='text' className="form-control" value={this.state.news} onChange={this.handleChange.bind(this)}></input>
+          <input id='newsfeed' type='text' className="form-control" placeholder='RSS Feed URL' value={this.state.news} onChange={this.handleChange.bind(this)}></input>
           <button onClick={()=>{this.clickHandler()}} className="btn btn-default">
             Load RSS Feed
           </button>
