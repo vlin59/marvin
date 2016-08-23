@@ -11,12 +11,11 @@ import { loadState, saveState } from './localStorage';
 import promisehandler from './utils/promisehandler';
 
 const persistedState = loadState();
-const createStoreWithMiddleware = applyMiddleware(promisehandler)(createStore);
 
 const store = createStore(
   reducers,
   persistedState,
-  applyMiddleware(promisehandler)
+  applyMiddleware(promisehandler, createLogger())
 );
 store.subscribe(()=>{
   saveState(store.getState());

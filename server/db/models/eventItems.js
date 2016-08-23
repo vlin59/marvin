@@ -4,7 +4,9 @@ var mongoose = require("mongoose");
 
 var eventItemSchema = new mongoose.Schema({
    name: String,
-   category: String
+   time: String,
+   phone: Number,
+   email: String
 });
 
 
