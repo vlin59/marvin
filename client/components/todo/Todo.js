@@ -9,7 +9,7 @@ export default class Todos extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: this.props.state.todos.data,
+      todos: this.props.state.todos.data || [],
       textInput: ''
     }
   }
