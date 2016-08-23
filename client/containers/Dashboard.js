@@ -7,6 +7,7 @@ import Todos from '../components/todo/Todo';
 import Weather from '../components/weather/Weather';
 import News from '../components/news/News';
 import Reminders from '../components/reminders/reminders';
+import SavedEvents from '../components/savedevents/SavedEvents';
 import ResizableAndMovable from 'react-resizable-and-movable';
 
 const style = {
@@ -20,11 +21,11 @@ const style = {
 var components = [
 
   { title: 'Music Player',      component: <MusicPlayer />, x: 200,  y: 20,  w: 300, h: 730, res: 730 },
-  { title: 'Reminders',         component: <Reminders /> ,           x: 540,  y: 400, w: 300, h: 350 },
+  { title: 'Reminders',         component: <Reminders />,   x: 540,  y: 400, w: 300, h: 350 },
   { title: 'Todays Weather',    component: <Weather />,     x: 540,  y: 20,  w: 300, h: 350 },
-  { title: 'News',              component: <News /> ,           x: 880,  y: 20,  w: 300, h: 350 },
+  { title: 'News',              component: <News />,        x: 880,  y: 20,  w: 300, h: 350 },
   { title: 'To-do List',        component: <Todos />,       x: 1220, y: 20,  w: 300, h: 350 },
-  { title: 'Saved Events',      component: null ,           x: 1220, y: 400, w: 300, h: 350 },
+  { title: 'Saved Events',      component: <SavedEvents />, x: 1220, y: 400, w: 300, h: 350 },
   { title: 'Home Automation',   component: <Lights />,      x: 880,  y: 400, w: 300, h: 350 }
 
 ];
