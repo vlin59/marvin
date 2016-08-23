@@ -5,6 +5,7 @@ import { setReminder } from '../../actions/index.js';
 import axios from 'axios';
 import moment from 'moment';
 import DatePicker from'react-datepicker';
+import { browserHistory } from 'react-router';
 
 
 export default class Reminders extends React.Component{
@@ -27,14 +28,14 @@ export default class Reminders extends React.Component{
     this.saveReminder = this.saveReminder.bind(this);
   }
 
-  saveReminder(eventTime, cb){
+  saveReminder(eventTime){
     const params = {
       event:{
         name: {
           text: this.state.reminder
         },
         description:{
-          text: this.state.remidner
+          text: this.state.reminder
         },
         start:{
           local: eventTime
@@ -44,12 +45,13 @@ export default class Reminders extends React.Component{
         }
       }
     };
-
+    const context = this;
     axios.post('/calendar/save', {
         params
       })
       .then(function (data) {
-        cb(data);
+          context.props.setReminder(context.state.reminder, eventTime);
+          browserHistory.push('/calendar/new');
       })
       .catch(function (error) {
         console.log(error);
@@ -81,9 +83,7 @@ export default class Reminders extends React.Component{
       min > now.minute()){
 
       this.convertDate(date,hour,min);
-      this.saveReminder(date.format(), function(d){
-        console.log(d);
-      });
+      this.saveReminder(date.format());
 
     //future date
     }else if(date.get('year') == now.get('year') &&
@@ -92,18 +92,15 @@ export default class Reminders extends React.Component{
       hour > now.hour()){
 
       this.convertDate(date,hour,min);
-      this.saveReminder(date.format(), function(d){
-        console.log(d);
-      });
+      this.saveReminder(date.format());
+
 
     }else if(date.get('year') >= now.get('year') &&
       date.get('month') >= now.get('month') &&
       date.get('date') > now.get('date')){
 
        this.convertDate(date,hour,min);
-       this.saveReminder(date.format(), function(d){
-        console.log(d);
-       });
+       this.saveReminder(date.format());
     }else{
       this.setState({
         errMsg: 'You need to pick a future time!'
@@ -169,3 +166,17 @@ export default class Reminders extends React.Component{
       )
   }
 }
+
+function mapStateToProps (state) {
+  return {
+
+  };
+}
+
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators({
+    setReminder: setReminder
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Reminders);

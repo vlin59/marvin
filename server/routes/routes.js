@@ -6,6 +6,7 @@ const weather = require('../helpers/weather');
 const stormpath = require('express-stormpath');
 const userController = require('../db/controllers/userController');
 const mailer = require('express-mailer');
+const eventItemsController = require('../db/controllers/eventItemsController');
 
 
 
@@ -14,9 +15,7 @@ module.exports = function(app, express) {
   /* Database Routes */
   app.post('/api/user/save', stormpath.loginRequired, userController.createOrFindUser);
   // This route will handle all database queries for reminders
-  app.post('/api/user/events', function(req, res){
-    res.send(200);
-  });
+  app.post('/api/user/events', stormpath.loginRequired, eventItemsController.addEventItem);
 
   // This route will handle all database queries for reminders
   app.post('/api/user/reminders', function(req, res){
@@ -115,8 +114,6 @@ module.exports = function(app, express) {
   app.post('/calendar/save', function(req, res){
 
     const params = req.body.params;
-
-    console.log(params);
 
     google.queryToken(function(auth){
        google.saveToCalendar(auth, params, function(confirmation){

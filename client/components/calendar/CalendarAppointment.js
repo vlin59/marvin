@@ -4,24 +4,47 @@ import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-
 class CalendarAppointment extends React.Component {
   constructor(props){
     super(props);
+
+    this.state = {
+      phone: '',
+      newEmail: ''
+    }
+
+    this.handlePhone = this.handlePhone.bind(this);
+    this.handleEmail = this.handleEmail.bind(this);
+    this.setReminder = this.setReminder.bind(this);
+
+
   }
 
   componentWillMount(){
     const id = this.props.location.query.id;
 
+    if(id){
+      const appointment = this.props.events.filter((event) => {
+        return event.id === id;
+      });
 
-    const appointment = this.props.events.filter((event) => {
-      return event.id === id;
-    });
+      this.saveAppointment(appointment[0], function(confirmation){
+        console.log(confirmation);
+      });
+    }
 
-    this.saveAppointment(appointment[0], function(confirmation){
-      console.log(confirmation);
-    });
+  }
 
+  handlePhone(e){
+    this.setState({
+      phone: e.target.value
+    })
+  }
+
+  handleEmail(e){
+    this.setState({
+      newEmail: e.target.value
+    })
   }
 
   saveAppointment(event, cb){
@@ -40,8 +63,52 @@ class CalendarAppointment extends React.Component {
 
   }
 
-  render() {
+  setReminder(){
+    const num = this.state.phone;
+    const newEmail = this.state.newEmail;
 
+    if(this.props.location.query.id){
+      const id = this.props.location.query.id;
+      const appointment = this.props.events.filter((event) => {
+        return event.id === id;
+      });
+      const reminder = appointment[0].name.text;
+      const time = appointment[0].start.local;
+
+      axios.post('/api/user/events', {
+        email: this.props.user.email,
+        num,
+        newEmail,
+        time,
+        reminder
+       })
+      .then(data =>{
+        console.log(data.data);
+        browserHistory.push('/dashboard')
+      });
+
+    }else{
+    const time = this.props.reminder.time;
+    const reminder = this.props.reminder.reminder;
+
+      axios.post('/api/user/events', {
+        email: this.props.user.email,
+        num,
+          newEmail,
+        time,
+          reminder
+       })
+      .then(data =>{
+        console.log(data.data);
+        browserHistory.push('/dashboard')
+      });
+
+    }
+  }
+
+
+
+  render() {
 
     return (
       <div className="container text-xs-center">
@@ -49,8 +116,9 @@ class CalendarAppointment extends React.Component {
          <div className="row">
           <h1>Event successfully added to your calendar!</h1>
           <p className="lead"> Would you like to set up a reminder?</p>
-          <button className="btn btn-default">SMS Reminder</button>
-          <button className="btn btn-default">Email Reminder</button>
+          <input onChange = {this.handlePhone}type="text" maxlength="10" placeholder="Put in your 10 digit number!"/>
+          <button onClick = {this.setReminder} className="btn btn-default">SMS/Email Reminder</button>
+          <input onChange = {this.handleEmail}type="text" placeholder="Different email? Input it here"/>
          </div>
 
         <div className="row">
@@ -68,7 +136,9 @@ class CalendarAppointment extends React.Component {
 
 function mapStateToProps (state) {
   return {
-    events: state.events
+    user: state.user,
+    events: state.events,
+    reminder: state.reminder
   };
 };
 

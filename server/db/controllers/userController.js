@@ -1,9 +1,10 @@
 const User = require('../models/user');
 
 module.exports = {
+
   createOrFindUser: function(req,res){
     User.findOne({
-      email: req.body.email,
+      email: req.body.email
     }, function(err, user){
       if(!user){
         User.create({
