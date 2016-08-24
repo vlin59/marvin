@@ -70,12 +70,12 @@ function mapStateToProps (state) {
     events: state.events,
     user: state.user
   };
-};
+}
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
     setCalendar: setCalendar
   }, dispatch);
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventsPage);
