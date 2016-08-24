@@ -2,10 +2,10 @@ import React from 'react';
 import Search from '../../containers/Search.js'
 
 var devs = [
-  { name: "AJ ZAWAWI", job: "LEAD DEVELOPER " },
-  { name: "JI BAIK", job: "PRODUCT OWNER & LEAD DEVELOPER" },
-  { name: "TAYLOR PAGE", job: "LEAD DEVELOPER " },
-  { name: "VICTOR LIN", job: "SCRUM MASTER & LEAD DEVELOPER " }
+  { name: "AJ ZAWAWI", job: "LEAD DEVELOPER ", pic: '../../styles/aj.jpeg', gh: 'https://github.com/ajzawawi' },
+  { name: "JI BAIK", job: "PRODUCT OWNER & LEAD DEVELOPER", pic: '../../styles/ji.png', gh: 'https://github.com/JiBaik' },
+  { name: "TAYLOR PAGE", job: "LEAD DEVELOPER", pic: '../../styles/taylor.jpg', gh: 'https://github.com/taylorpage' },
+  { name: "VICTOR LIN", job: "SCRUM MASTER & LEAD DEVELOPER", pic: '../../styles/victor.png', gh: 'https://github.com/vlin59' }
 ];
 
 var center = {
@@ -29,7 +29,9 @@ export default class main extends React.Component {
           devs.map(dev => {
             return (
               <div className="col-xs-3" style={ center }>
-                <img className="about-image" src="../../styles/marvin_color.png"></img>
+                <a href={ dev.gh }>
+                  <img className="about-image" src={ dev.pic }></img>
+                </a>
                 <div style={ center }> { dev.name } </div>
                 <div style={ center }> { dev.job } </div>
               </div>
