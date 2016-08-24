@@ -5,7 +5,7 @@ var devs = [
   { name: "AJ ZAWAWI", job: "LEAD DEVELOPER ", pic: '../../styles/aj.jpeg', gh: 'https://github.com/ajzawawi' },
   { name: "JI BAIK", job: "PRODUCT OWNER & LEAD DEVELOPER", pic: '../../styles/ji.png', gh: 'https://github.com/JiBaik' },
   { name: "TAYLOR PAGE", job: "LEAD DEVELOPER", pic: '../../styles/taylor.jpg', gh: 'https://github.com/taylorpage' },
-  { name: "VICTOR LIN", job: "SCRUM MASTER & LEAD DEVELOPER", pic: '../../styles/victor.png', gh: 'https://github.com/vlin59' }
+  { name: "VICTOR LIN", job: "SCRUM MASTER & LEAD DEVELOPER", pic: '../../styles/victor.jpg', gh: 'https://github.com/vlin59' }
 ];
 
 var center = {
