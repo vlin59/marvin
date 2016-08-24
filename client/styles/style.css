@@ -17,6 +17,12 @@ body {
   max-width: 1500px;
 }
 
+.about-image {
+  height: 400px;
+  width: 400px;
+  border-radius: 100%;
+}
+
 .page {
   background-color: #fff;
   border-radius: 20px;
