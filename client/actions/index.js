@@ -9,6 +9,7 @@ export const SET_TODOS = 'SET_TODOS';
 export const SET_WEATHER = 'SET_WEATHER';
 export const SET_NEWS = 'SET_NEWS';
 export const SET_REMINDER = 'SET_REMINDER';
+export const SET_SAVEDEVENTS = 'SET_SAVEDEVENTS'
 
 export function setCalendar(events) {
   return {
@@ -68,15 +69,19 @@ export function setNews (news) {
   };
 }
 
-export function setReminder (reminder, time){
-
-
+export function setReminder (reminder, time) {
   return {
     type: SET_REMINDER,
     payload: {
       reminder,
       time
     }
-  }
+  };
 }
 
+export function setSavedEvents (savedevents) {
+  return {
+    type: SET_SAVEDEVENTS,
+    payload: savedevents
+  };
+}

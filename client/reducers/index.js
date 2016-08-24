@@ -8,6 +8,7 @@ import LightsReducer from './reducer_lights';
 import TodoReducer from './reducer_todo';
 import NewsReducer from './reducer_news';
 import ReminderReducer from './reducer_reminder';
+import SavedEventsReducer from './reducer_savedevents';
 
   const rootReducer = combineReducers({
     events: EventsReducer,
@@ -18,7 +19,8 @@ import ReminderReducer from './reducer_reminder';
     lights: LightsReducer,
     todos: TodoReducer,
     news: NewsReducer,
-    reminder: ReminderReducer
+    reminder: ReminderReducer,
+    savedevents: SavedEventsReducer
   });
 
 export default rootReducer;

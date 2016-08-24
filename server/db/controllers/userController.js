@@ -33,6 +33,19 @@ module.exports = {
     var conditions = { email: email };
     User.findOne(conditions, function(err, data) {
       callback(data.todos);
-    })
+    });
+  },
+
+  getSavedEvents: function(req, res) {
+    var conditions = { email: req.params.email };
+    var results = [];
+    User.findOne(conditions)
+      .populate('eventItems')
+      .exec(function(err, user) {
+        results = user.eventItems.sort(function(a, b) {
+          return Date.parse(a.time) - Date.parse(b.time);
+        });
+      res.send(results);
+    });
   }
-}
+};

@@ -16,6 +16,8 @@ module.exports = function(app, express) {
   app.post('/api/user/save', stormpath.loginRequired, userController.createOrFindUser);
   // This route will handle all database queries for reminders
   app.post('/api/user/events', stormpath.loginRequired, eventItemsController.addEventItem);
+  // This route will handle database queries for savedevents for the user
+  app.get('/api/user/events/:email', stormpath.loginRequired, userController.getSavedEvents);
 
   // This route will handle all database queries for reminders
   app.post('/api/user/reminders', function(req, res){
@@ -153,7 +155,7 @@ module.exports = function(app, express) {
     });
   });
 
-
+  // This route will handle all API queries for the current weather conditions
   app.get('/api/weather', function(req, res){
     const lat = req.query.lat;
     const lon = req.query.lon;
@@ -162,9 +164,6 @@ module.exports = function(app, express) {
     });
   });
 
-
-
-//send an email of recipe
   app.post('/api/email', function(req, res){
      app.mailer.send('email', {
       //CHANGE TO THE USER'S EMAIL
