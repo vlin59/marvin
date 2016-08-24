@@ -16,8 +16,8 @@ module.exports = function(app, express) {
   app.post('/api/user/save', stormpath.loginRequired, userController.createOrFindUser);
   // This route will handle all database queries for reminders
   app.post('/api/user/events', stormpath.loginRequired, eventItemsController.addEventItem);
-
-  app.get('/api/user/events/:email', userController.getSavedEvents);
+  // This route will handle database queries for savedevents for the user
+  app.get('/api/user/events/:email', stormpath.loginRequired, userController.getSavedEvents);
 
   // This route will handle all database queries for reminders
   app.post('/api/user/reminders', function(req, res){
