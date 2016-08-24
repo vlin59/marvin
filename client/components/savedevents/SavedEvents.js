@@ -11,7 +11,9 @@ export default class SavedEvents extends React.Component {
   }
 
   render() {
-
+    return(
+      <div></div>
+    )
   }
 
 
