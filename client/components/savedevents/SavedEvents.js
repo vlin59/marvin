@@ -38,7 +38,12 @@ export default class SavedEvents extends React.Component {
                 </span>
               { "  "+event.name }
               </div>
-              <div>{ time }</div>
+              <div>
+                <span>
+                  <FontAwesome name='clock-o' size='1x' />
+                </span>
+              { time }
+              </div>
             </div>
           );
         })}

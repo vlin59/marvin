@@ -9,6 +9,7 @@ import News from '../components/news/News';
 import Reminders from '../components/reminders/reminders';
 import SavedEvents from '../components/savedevents/SavedEvents';
 import ResizableAndMovable from 'react-resizable-and-movable';
+import FontAwesome from 'react-fontawesome';
 
 const style = {
   textAlign: 'center',
@@ -20,13 +21,13 @@ const style = {
 
 var components = [
 
-  { title: 'Music Player',      component: <MusicPlayer />, x: 200,  y: 20,  w: 300, h: 730, res: 730 },
-  { title: 'Reminders',         component: <Reminders />,   x: 540,  y: 400, w: 300, h: 350 },
-  { title: 'Todays Weather',    component: <Weather />,     x: 540,  y: 20,  w: 300, h: 350 },
-  { title: 'News',              component: <News />,        x: 880,  y: 20,  w: 300, h: 350 },
-  { title: 'To-do List',        component: <Todos />,       x: 1220, y: 20,  w: 300, h: 350 },
-  { title: 'Saved Events',      component: <SavedEvents />, x: 1220, y: 400, w: 300, h: 350 },
-  { title: 'Home Automation',   component: <Lights />,      x: 880,  y: 400, w: 300, h: 350 }
+  { title: '  Music Player',      component: <MusicPlayer />, x: 200,  y: 20,  w: 300, h: 730, res: 730, icon: <FontAwesome name='music' size='1x' /> },
+  { title: '  Reminders',         component: <Reminders />,   x: 540,  y: 400, w: 300, h: 350, icon: <FontAwesome name='calendar' size='1x' /> },
+  { title: '  Today\'s Weather',  component: <Weather />,     x: 540,  y: 20,  w: 300, h: 350, icon: <FontAwesome name='sun-o' size='1x' /> },
+  { title: '  News',              component: <News />,        x: 880,  y: 20,  w: 300, h: 350, icon: <FontAwesome name='newspaper-o' size='1x' /> },
+  { title: '  To-do List',        component: <Todos />,       x: 1220, y: 20,  w: 300, h: 350, icon: <FontAwesome name='tasks' size='1x' /> },
+  { title: '  Saved Events',      component: <SavedEvents />, x: 1220, y: 400, w: 300, h: 350, icon: <FontAwesome name='sticky-note' size='1x' /> },
+  { title: '  Home Automation',   component: <Lights />,      x: 880,  y: 400, w: 300, h: 350, icon: <FontAwesome name='lightbulb-o' size='1x' /> }
 
 ];
 
@@ -61,7 +62,7 @@ class Dashboard extends React.Component {
       <div>
         {
         this.state.components.map((comp, i) => {
-          if (comp.title === 'News') {
+          if (comp.title === '  News') {
             return (
               <ResizableAndMovable
                 x={comp.x}
@@ -77,7 +78,13 @@ class Dashboard extends React.Component {
                 onDrag= { this.positionChange.bind(this, i) }
                 className="widget"
               >
-                <div className="marvin-teal"><h3>{ comp.title }</h3>
+                <div className="marvin-teal">
+                  <h3>
+                    <span>
+                      { comp.icon }
+                    </span>
+                    { comp.title }
+                  </h3>
                   <div>
                     <News
                       width={ comp.w }
@@ -103,7 +110,13 @@ class Dashboard extends React.Component {
               onDrag= { this.positionChange.bind(this, i) }
               className="widget"
             >
-              <div className="marvin-teal"><h3>{ comp.title }</h3>
+              <div className="marvin-teal">
+                <h3>
+                  <span>
+                    { comp.icon }
+                  </span>
+                  { comp.title }
+                </h3>
                 <div> { comp.component } </div>
               </div>
             </ResizableAndMovable>
