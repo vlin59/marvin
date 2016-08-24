@@ -167,9 +167,9 @@ module.exports = function(app, express) {
   app.post('/api/email', function(req, res){
      app.mailer.send('email', {
       //CHANGE TO THE USER'S EMAIL
-      to: 'trescomma@gmail.com', // REQUIRED. This can be a comma delimited string just like a normal email to field.
-      subject: 'SUBJECT', // REQUIRED.
-      text: 'EMAIL TEXT'
+      to: req.body.email, // REQUIRED. This can be a comma delimited string just like a normal email to field.
+      subject: 'Marvin Reminder!', // REQUIRED.
+      text: req.body.msg
     }, function (err) {
       if (err) {
         // handle error
