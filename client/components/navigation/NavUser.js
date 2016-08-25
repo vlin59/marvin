@@ -13,11 +13,6 @@ export default (props) => (
 
     <Link className="navbar-brand" to="/">MARVIN</Link>
     <ul className="nav navbar-nav pull-xs-right">
-
-      <li className="nav-item">
-       <Link className="nav-link" to="/about">About</Link>
-      </li>
-
       <li className="nav-item active">
         <Link className="nav-link" to="/">Search</Link>
       </li>
@@ -26,6 +21,9 @@ export default (props) => (
       </li>
       <li className="nav-item">
         <Link className="nav-link" to="/dashboard"><span className="sr-only">(current)</span>Dashboard</Link>
+      </li>
+      <li className="nav-item">
+       <Link className="nav-link" to="/about">About</Link>
       </li>
 
       <li className="nav-item">
@@ -39,5 +37,4 @@ export default (props) => (
 </div>
 
 )
-
 
