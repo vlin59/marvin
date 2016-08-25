@@ -1,0 +1,136 @@
+import React from 'react';
+import { setEvents, setMovies, setVenues } from '../actions/index.js';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import axios from 'axios';
+import { browserHistory } from 'react-router';
+import Transcriber from '../components/transcriber/Transcriber';
+
+class MarvinBrain extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      query: "",
+      lat: '0.0',
+      long: '0.0'
+    }
+
+    this.searchEvents = this.searchEvents.bind(this);
+    this.clickHander = this.clickHandler.bind(this);
+    this.redirectSearch = this.redirectSearch.bind(this);
+
+     navigator.geolocation.getCurrentPosition(position => {
+      this.setState({
+        lat: position.coords.latitude.toString(),
+        long: position.coords.longitude.toString()
+      });
+    });
+
+  }
+
+  handleChange(e) {
+    this.setState({
+      query: e.target.value
+    });
+
+  }
+
+  searchEvents (search) {
+    //clear state
+    this.props.setEvents([]);
+    //then do search stuff
+    var context = this;
+    axios.post('/api/eventbrite', search).then(function(data) {
+      context.props.setEvents(data.data.events);
+    });
+    browserHistory.push('/results');
+  }
+
+
+  searchYelp (search) {
+    //clear state
+    this.props.setVenues([]);
+    //then do search stuff
+    var context = this;
+    axios.post('/api/yelp', search).then(function(data) {
+      console.log(data);
+      context.props.setVenues(data.data.businesses);
+    });
+    browserHistory.push('/yelp/results');
+  }
+
+  redirectSearch(options){
+    const type = options[0];
+    const query = options[1];
+
+    var search = {
+      query: query,
+      lat: this.state.lat,
+      long: this.state.long
+    }
+
+    if(type === 'eventSearch'){
+      this.searchEvents(search);
+    }
+
+    if(type === 'yelpSearch'){
+      console.log("Trigger yelp search");
+      this.searchYelp(search);
+    }
+  }
+
+  onTranscription(recognized) {
+
+    this.setState({
+      query: this.state.query + recognized,
+    });
+  }
+
+  clickHandler(){
+    const self = this;
+    axios.post('/marvin/query', {
+      params: {
+        query: this.state.query
+      }
+    })
+    .then(function (data) {
+      self.redirectSearch(data.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+  }
+
+
+  render() {
+    return (
+      <div>
+      <input type="text" className="form-control" value={this.state.query} onChange={this.handleChange.bind(this)} />
+      <p>{this.state.query}</p>
+      <button onClick={()=>{this.clickHandler()}} className="btn btn-default">
+      Submit
+      </button>
+      <Transcriber onTranscription={this.onTranscription.bind(this)} />
+      </div>
+      )
+  }
+}
+
+
+function mapStateToProps (state) {
+  return {
+    search: state
+  };
+}
+
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators({
+    setVenues: setVenues,
+    setEvents: setEvents,
+    setMovies: setMovies
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MarvinBrain);
+
