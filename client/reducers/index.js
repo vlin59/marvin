@@ -9,9 +9,11 @@ import TodoReducer from './reducer_todo';
 import NewsReducer from './reducer_news';
 import ReminderReducer from './reducer_reminder';
 import SavedEventsReducer from './reducer_savedevents';
+import VenueReducer from './reducer_yelp';
 
   const rootReducer = combineReducers({
     events: EventsReducer,
+    venues: VenueReducer,
     user: UserReducer,
     calendar: CalendarReducer,
     movies: MoviesReducer,
