@@ -31,6 +31,27 @@ class Marvin extends Component {
     });
   }
 
+  searchEvents() {
+    const context = this;
+
+    var options = 'https://www.eventbriteapi.com/v3/events/search/' +
+    '?location.latitude=' + this.state.initialPosition.coords.latitude +
+    '&location.longitude=' + this.state.initialPosition.coords.longitude +
+    '&location.within=100mi' +
+    '&q=' + context.state.text +
+    '&token=UQOCU57TT67WA4W7V6RE';
+
+    fetch(options).then(function(data) {
+      return data.json();
+    }).then(function(json) {
+      context.sortEvents(json.events);
+    })
+  }
+
+  sortEvents(json) {
+    console.log(json)
+  }
+
   render() {
     var results = this.state.results.map((item, i) => {
       return (
