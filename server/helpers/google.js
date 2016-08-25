@@ -6,7 +6,7 @@ const googleController = require('../db/controllers/tokenController');
 
 const CLIENT_ID = '4395616523-imnbjk054edvhhb4hjn57dp0n0927tfn.apps.googleusercontent.com';
 const CLIENT_SECRET = 'xyg2EeaLdOpBHgj9IYLWhwy2';
-const REDIRECT_URL = 'http://localhost:3000/process';
+const REDIRECT_URL = process.env.GOOGLE_CAL_REDIRECT || 'http://localhost:3000/process';
 
 const oauth2Client = new OAuth2Client(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL);
 
