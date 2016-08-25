@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setLights } from '../../actions/index.js'
 
-export default class Lights extends React.Component {
+class Lights extends React.Component {
   constructor(props){
     super(props);
     this.state = {

@@ -8,7 +8,7 @@ import DatePicker from'react-datepicker';
 import { browserHistory } from 'react-router';
 
 
-export default class Reminders extends React.Component{
+class Reminders extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
