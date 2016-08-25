@@ -15,8 +15,7 @@ import Dashboard from './containers/Dashboard';
 import Todo from './components/todo/Todo';
 import ForgotPage from './components/auth/ForgotPage';
 import About from './components/about/About';
-
-
+import ResultsYelpPage from './containers/ResultsYelpPage';
 
 export default(
   <Route path='/' component={MainPage}>
@@ -24,6 +23,7 @@ export default(
     <Route path ='register' component ={RegistrationPage} />
     <Route path ='login' component ={LoginPage} />
     <Route path = 'results' component ={ResultsPage}/>
+    <Route path = 'yelp/results' component ={ResultsYelpPage}/>
     <Route path = 'calendar/auth' component ={CalendarAuth}/>
     <Route path = 'process' component ={CalendarPage}/>
     <Route path = 'calendar' component ={CalendarPage}/>
