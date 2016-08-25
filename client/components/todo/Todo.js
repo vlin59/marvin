@@ -5,7 +5,7 @@ import { setTodos } from '../../actions/index.js';
 import axios from 'axios';
 import FontAwesome from 'react-fontawesome';
 
-export default class Todos extends React.Component {
+class Todos extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

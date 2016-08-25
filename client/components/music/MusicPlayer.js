@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { setTracks } from '../../actions/index.js'
 
 
-export default class MusicPlayer extends React.Component {
+class MusicPlayer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

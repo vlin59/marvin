@@ -5,7 +5,7 @@ import axios from 'axios';
 import { setWeather } from '../../actions/index.js'
 
 
-export default class Weather extends React.Component {
+class Weather extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

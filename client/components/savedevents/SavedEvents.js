@@ -5,7 +5,7 @@ import { setSavedEvents } from '../../actions/index.js';
 import axios from 'axios';
 import FontAwesome from 'react-fontawesome';
 
-export default class SavedEvents extends React.Component {
+class SavedEvents extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
