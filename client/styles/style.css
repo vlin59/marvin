@@ -520,3 +520,12 @@ body {
   margin-top: 15px;
   margin-bottom: 15px;
 }
+
+.yelp-result, .event-result {
+  margin-top: 4%;
+}
+
+.yelp-result-headline, .event-result-headline {
+  font-size: 20px;
+  color: #ef494f;
+}
