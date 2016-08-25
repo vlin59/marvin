@@ -29,7 +29,7 @@ class SavedEvents extends React.Component {
       <div>
         {this.props.savedevents.map((event) => {
           let time = new Date(Date.parse(event.time))
-          time = time.toUTCString();
+          time = time.toString();
           return (
             <div classname="row" style={ { textAlign: "left", overflow: "auto" } }>
               <div>
