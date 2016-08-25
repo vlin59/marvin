@@ -182,6 +182,7 @@ body {
   margin-right: 5px;
 }
 
+<<<<<<< Updated upstream
 .react-datepicker__tether-element-attached-top .react-datepicker__triangle, .react-datepicker__tether-element-attached-bottom .react-datepicker__triangle, .react-datepicker__year-read-view--down-arrow {
   margin-left: -8px;
   position: absolute;
@@ -475,4 +476,17 @@ body {
   z-index: 2147483647;
 }
 
+.login-form {
+  max-width: 500px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 50px;
+}
 
+.full {
+  width: 100%;
+}
+
+.venues img {
+  max-width: 400px;
+}
