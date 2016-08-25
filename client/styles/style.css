@@ -18,9 +18,33 @@ body {
 }
 
 .about-image {
-  height: 400px;
-  width: 400px;
+  height: 200px;
+  width: 200px;
   border-radius: 100%;
+}
+
+.page-about {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 50px;
+  margin-top: 2%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 1%;
+}
+
+.page-about h1, h2 {
+  margin-top: 2%;
+}
+
+.page-about-dev {
+  color: #a73337;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.page-about-description {
+  padding: 20px;
+  margin-top: 10px;
 }
 
 .page {
@@ -182,7 +206,6 @@ body {
   margin-right: 5px;
 }
 
-<<<<<<< Updated upstream
 .react-datepicker__tether-element-attached-top .react-datepicker__triangle, .react-datepicker__tether-element-attached-bottom .react-datepicker__triangle, .react-datepicker__year-read-view--down-arrow {
   margin-left: -8px;
   position: absolute;
@@ -237,6 +260,7 @@ body {
   border-radius: 4px;
   display: inline-block;
   position: relative;
+  width:100%;
 }
 
 .react-datepicker__triangle {
@@ -357,6 +381,7 @@ body {
 .react-datepicker__input-container {
   position: relative;
   display: inline-block;
+  width:100%;
 }
 
 .react-datepicker__year-read-view {
@@ -489,4 +514,9 @@ body {
 
 .venues img {
   max-width: 400px;
+}
+
+.date-padding {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }

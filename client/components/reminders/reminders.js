@@ -146,27 +146,33 @@ class Reminders extends React.Component{
     return (
       <div className ='container-fluid'>
       <div className = 'row'>
-        <div className ='col-sm-12'>
-          <input type = "text" placeholder='Add a reminder' value={this.state.reminder}onChange={this.handleReminder}/>
+        <div className ='form-group'>
+          <input type = "text" className="form-control" placeholder='Add a reminder' value={this.state.reminder}onChange={this.handleReminder}/>
+          <div className="date-padding">
           <DatePicker
+          className="form-control"
           selected={this.state.date}
           onChange={this.handleDate}
           />
+          </div>
         </div>
-        <div className='col-sm-12'>
-          <div className ='col-sm-8'>
-            <input type = 'number' max='12' min ='1' value={this.state.hours}onChange={this.handleHours}/>:
-            <input type = 'number' max= '59' min ='0' value = {this.state.min}onChange={this.handleMin}/>
+        <div className='row'>
+          <div className ='col-sm-4'>
+            <input type = 'number' className="form-control" max='12' min ='1' value={this.state.hours}onChange={this.handleHours}/>
+          </div>
+
+          <div className ='col-sm-4'>
+            <input type = 'number' className="form-control" max= '59' min ='0' value = {this.state.min}onChange={this.handleMin}/>
           </div>
           <div className ='col-sm-4'>
-            <select value = {this.state.am} onChange={this.changeWhen}>
+            <select className="form-control" value = {this.state.am} onChange={this.changeWhen}>
                 <option>am</option>
                 <option>pm</option>
             </select>
           </div>
         </div>
 
-          <button onClick={this.handleSubmit}>Create</button>
+          <button className="btn btn-default btn-padding full" onClick={this.handleSubmit}>Create</button>
           <p> {this.state.errMsg} </p>
         </div>
       </div>
