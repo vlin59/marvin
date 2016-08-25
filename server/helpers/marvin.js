@@ -68,6 +68,10 @@ Marvin.prototype.actionRedirect = function(marvin, action, query, cb){
     cb(song);
   }
 
+  if(action === "toggle"){
+    cb("toggle");
+  }
+
 }
 
 Marvin.prototype.classify = function(action, filtered, cb){
@@ -94,11 +98,17 @@ exports.classifyQuery = function(query, cb){
 
     marvin.actionRedirect(marvin, action, query, function(filtered){
 
-      marvin.classify(action, filtered, function(category){
-        filtered = Array.isArray(filtered) ? filtered.join(" ") : filtered;
-        console.log([category, filtered, action]);
-        cb([category, filtered, action]);
-      });
+      if(filtered == "toggle"){
+        cb(['lights', 'lights']);
+      } else {
+        marvin.classify(action, filtered, function(category){
+          filtered = Array.isArray(filtered) ? filtered.join(" ") : filtered;
+          console.log([category, filtered, action]);
+          cb([category, filtered, action]);
+        });
+      }
+
+
 
     });
 

@@ -74,8 +74,12 @@ class MarvinBrain extends React.Component {
     }
 
     if(type === 'yelpSearch'){
-      console.log("Trigger yelp search");
       this.searchYelp(search);
+    }
+
+    if(type === 'lights'){
+      this.toggleLights()
+      console.log("Let's toggle the lights");
     }
   }
 
