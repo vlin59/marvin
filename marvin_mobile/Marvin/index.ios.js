@@ -89,7 +89,7 @@ class Marvin extends Component {
               onChangeText={(text) => this.setState({text})}
               value={this.state.text}
             />
-            <TouchableOpacity style={ styles.buttonPos }>
+            <TouchableOpacity onPress= { this.searchEvents.bind(this) } style={ styles.buttonPos }>
               <Text style={styles.button}>SEARCH</Text>
             </TouchableOpacity>
             <View>
