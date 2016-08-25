@@ -19,8 +19,16 @@ class Marvin extends Component {
     super(props);
     this.state = {
       text: '',
-      results: []
+      results: [],
+      initialPosition: null
     };
+  }
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      var initialPosition = position;
+      this.setState({initialPosition});
+    });
   }
 
   render() {
