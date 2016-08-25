@@ -49,7 +49,18 @@ class Marvin extends Component {
   }
 
   sortEvents(json) {
-    console.log(json)
+    var results = json.reduce(function(memo, event) {
+      memo.push({
+        name: event.name.text,
+        desc: event.description.text,
+        url: event.url
+      });
+      return memo;
+    }, []);
+
+    this.setState({
+      results: results
+    })
   }
 
   render() {
