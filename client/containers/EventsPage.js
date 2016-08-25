@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { setCalendar } from '../actions/index';
 import { connect } from 'react-redux';
 import Search from './Search';
+import MarvinBrain from './MarvinBrain';
 import axios from 'axios';
 
 
@@ -47,7 +48,7 @@ class EventsPage extends React.Component{
             </div>
 
              <div className="row text-xs-center">
-              <Search />
+              <MarvinBrain />
             </div>
 
 
