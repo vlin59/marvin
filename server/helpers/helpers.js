@@ -29,7 +29,7 @@ exports.queryYelp = function(query, cb){
     uri:url,
     qs: {
       term: query.term,
-      cll: query.lat + ',' + query.long,
+      ll: query.lat + ',' + query.long,
       location: "New York, NY"
     },
     headers: {

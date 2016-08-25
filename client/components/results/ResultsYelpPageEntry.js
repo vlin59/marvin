@@ -22,12 +22,14 @@ export default class ResultsYelpPageEntry extends React.Component {
 
     <div className="col-md-7">
       <div className="row">
-      <a href={this.props.venue.url}>{this.props.venue.name}</a>
-      <p>{this.props.venue.location.address1},
-          {this.props.venue.location.city},
-          {this.props.venue.location.state},
-          {this.props.venue.location.zip_code}</p>
-          <p>Pricing: {this.props.venue.price} | Rating: {this.props.venue.rating} stars</p>
+      <div className="yelp-result">
+        <a className="yelp-result-headline" href={this.props.venue.url}>{this.props.venue.name}</a>
+        <p>{this.props.venue.location.address1} ,
+            {this.props.venue.location.city} ,
+            {this.props.venue.location.state} ,
+            {this.props.venue.location.zip_code}</p>
+            <p>Pricing: {this.props.venue.price} | Rating: {this.props.venue.rating} stars</p>
+        </div>
       </div>
 
     </div>

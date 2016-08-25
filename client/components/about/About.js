@@ -3,7 +3,7 @@ import Search from '../../containers/Search.js'
 
 var devs = [
   { name: "AJ ZAWAWI", job: "SOFTWARE ENGINEER ", pic: '../../styles/aj.jpeg', gh: 'https://github.com/ajzawawi' },
-  { name: "JI BAIK", job: "PRODUCT OWNER & SOFTWARE ENGINEER", pic: '../../styles/ji.png', gh: 'https://github.com/JiBaik' },
+  { name: "JI BAIK", job: "PRODUCT OWNER & SOFTWARE ENGINEER", pic: '../../styles/ji-edit.png', gh: 'https://github.com/JiBaik' },
   { name: "TAYLOR PAGE", job: "SOFTWARE ENGINEER", pic: '../../styles/taylor.jpg', gh: 'https://github.com/taylorpage' },
   { name: "VICTOR LIN", job: "SCRUM MASTER & SOFTWARE ENGINEER", pic: '../../styles/victor.jpg', gh: 'https://github.com/vlin59' }
 ];
