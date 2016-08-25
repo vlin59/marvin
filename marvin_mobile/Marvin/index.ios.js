@@ -10,7 +10,7 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
-
+  Linking
 } from 'react-native';
 
 class Marvin extends Component {
@@ -63,11 +63,15 @@ class Marvin extends Component {
     })
   }
 
+  goToLink(i) {
+    Linking.openURL(this.state.results[i].url);
+  }
+
   render() {
     var results = this.state.results.map((item, i) => {
       return (
         <View key={i}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={ this.goToLink.bind(this, i) }>
             <Text style={ styles.results }>
               { item.name }
             </Text>
