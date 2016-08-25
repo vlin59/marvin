@@ -70,6 +70,8 @@ class MarvinBrain extends React.Component {
       long: this.state.long
     }
 
+    console.log(type);
+
     if(type === 'eventSearch'){
       this.searchEvents(search);
     }
@@ -80,6 +82,11 @@ class MarvinBrain extends React.Component {
 
     if(type === 'lights'){
       this.toggleLights();
+    }
+
+    if(type === "playMusic"){
+      console.log("Let's play music");
+      browserHistory.push('/music');
     }
   }
 
