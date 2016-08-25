@@ -70,6 +70,13 @@ export default class Reminders extends React.Component{
     const date = this.state.date;
     const when = this.state.when;
 
+    if(Number(hour)>12 || Number(hour)<0 || Number(min)>59 || Number(min)<0){
+      this.setState({
+        errMsg: 'Please provide a correct time'
+      });
+      return;
+    }
+
     const now = moment();
     //convert hour depending on ampm
 
