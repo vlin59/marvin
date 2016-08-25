@@ -10,6 +10,7 @@ export const SET_WEATHER = 'SET_WEATHER';
 export const SET_NEWS = 'SET_NEWS';
 export const SET_REMINDER = 'SET_REMINDER';
 export const SET_SAVEDEVENTS = 'SET_SAVEDEVENTS'
+export const SET_VENUES = 'SET_VENUES'
 
 export function setCalendar(events) {
   return {
@@ -22,6 +23,13 @@ export function setEvents (event) {
   return {
     type: SET_EVENTS,
     payload: event
+  };
+}
+
+export function setVenues(venue) {
+  return {
+    type: SET_VENUES,
+    payload: venue
   };
 }
 

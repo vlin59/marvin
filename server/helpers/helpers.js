@@ -1,21 +1,54 @@
 const request = require('request');
 const moviedbAPI = '9044e2a43187859b81537a54bf7d6874';
+var yelp_client_id = 'm21e9M4PbxLrLlE_5EQkMg'
+var yelp_client_secret = 'dmvYTj4wuht6TZbhMnfa0KxyRCtCwdbzTpRvjQfuSA50jrmq6yp5hMBopKDxVrKt'
+
 /* All Helper Functions Belong Here
    Use callbacks to return values back to the routes */
 
 // Helper functions for Yelp API
 exports.getYelpToken = function(cb){
-}
+  var url = 'https://api.yelp.com/oauth2/token';
+
+  const credentials = {
+      client_id: yelp_client_id,
+      client_secret: yelp_client_secret
+  }
+
+  request.post(url, {form: credentials}, function(err, res, body){
+    cb(body);
+  });
+
+};
 
 exports.queryYelp = function(query, cb){
-}
 
-exports.searchEventBrite = function(category, query, lat, long, cb) {
+  var url = "https://api.yelp.com/v3/businesses/search"
+
+  var opts = {
+    uri:url,
+    qs: {
+      term: query.term,
+      cll: query.lat + ',' + query.long,
+      location: "New York, NY"
+    },
+    headers: {
+    'Authorization': 'Bearer ' + query.token.access_token
+    }
+  }
+
+  request(opts, function(err, res, body){
+    const parsed = JSON.parse(body);
+    cb(parsed);
+  });
+};
+
+
+exports.searchEventBrite = function(query, lat, long, cb) {
   var options = 'https://www.eventbriteapi.com/v3/events/search/' +
     '?location.latitude=' + lat +
     '&location.longitude=' + long +
     '&location.within=100mi' +
-    '&categories=' + category +
     '&q=' + query +
     '&token=UQOCU57TT67WA4W7V6RE';
 
@@ -23,7 +56,6 @@ exports.searchEventBrite = function(category, query, lat, long, cb) {
       cb(JSON.parse(res.body));
   });
 }
-
 
 exports.searchSpotify = function(state, cb){
   var options = 'https://api.spotify.com/v1/search/?q=' + state +

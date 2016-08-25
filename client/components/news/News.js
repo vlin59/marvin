@@ -45,7 +45,7 @@ class News extends React.Component {
           <input id='newsfeed' type='text' className="form-control" placeholder='RSS Feed URL' value={this.state.news} onChange={this.handleChange.bind(this)}></input>
           </div>
           <div>
-          <button onClick={()=>{this.clickHandler()}} className="btn btn-default btn-padding">
+          <button onClick={()=>{this.clickHandler()}} className="btn btn-default btn-padding full">
             Load RSS Feed
           </button>
         </div>
