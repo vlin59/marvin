@@ -30,6 +30,7 @@ class SavedEvents extends React.Component {
         {this.props.savedevents.map((event) => {
           let time = new Date(Date.parse(event.time))
           time = time.toString();
+          time = time.substring(0,time.indexOf(' GMT')-3);
           return (
             <div classname="row" style={ { textAlign: "left", overflow: "auto" } }>
               <div>
