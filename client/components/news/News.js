@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { setNews } from '../../actions/index.js'
 import axios from 'axios';
 
-export default class News extends React.Component {
+class News extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
