@@ -1,5 +1,5 @@
 import React from 'react';
-import { setEvents, setMovies, setVenues } from '../actions/index.js';
+import { setEvents, setMovies, setVenues, setLights } from '../actions/index.js';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
@@ -12,7 +12,8 @@ class MarvinBrain extends React.Component {
     this.state = {
       query: "",
       lat: '0.0',
-      long: '0.0'
+      long: '0.0',
+      lights: ''
     }
 
     this.searchEvents = this.searchEvents.bind(this);
@@ -78,9 +79,19 @@ class MarvinBrain extends React.Component {
     }
 
     if(type === 'lights'){
-      this.toggleLights()
-      console.log("Let's toggle the lights");
+      this.toggleLights();
     }
+  }
+
+  toggleLights() {
+    this.props.setLights([]);
+    var context = this;
+    axios.post('/api/lights').then(function(data) {
+      context.props.setLights(data.data.status);
+      context.setState({
+        lights: data.data.status
+      });
+    });
   }
 
   onTranscription(recognized) {
@@ -124,7 +135,8 @@ class MarvinBrain extends React.Component {
 
 function mapStateToProps (state) {
   return {
-    search: state
+    search: state,
+    lights: state.lights
   };
 }
 
@@ -132,7 +144,8 @@ function mapDispatchToProps (dispatch) {
   return bindActionCreators({
     setVenues: setVenues,
     setEvents: setEvents,
-    setMovies: setMovies
+    setMovies: setMovies,
+    setLights: setLights
   }, dispatch);
 }
 
