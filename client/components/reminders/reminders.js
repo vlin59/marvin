@@ -180,11 +180,7 @@ class Reminders extends React.Component{
   }
 }
 
-function mapStateToProps (state) {
-  return {
 
-  };
-}
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
@@ -192,4 +188,4 @@ function mapDispatchToProps (dispatch) {
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Reminders);
+export default connect(null, mapDispatchToProps)(Reminders);

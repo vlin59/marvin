@@ -128,7 +128,7 @@ class MarvinBrain extends React.Component {
   render() {
     return (
       <div>
-      <input type="text" className="form-control" value={this.state.query} onChange={this.handleChange.bind(this)} />
+      <input type="text" className="form-control" placeholder="Ex: Marvin find me Mexican food" value={this.state.query} onChange={this.handleChange.bind(this)} />
       <p>{this.state.query}</p>
       <button onClick={()=>{this.clickHandler()}} className="btn btn-default">
       Submit
